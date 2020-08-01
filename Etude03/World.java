@@ -142,22 +142,22 @@ public class World {
 			{
 				if(currentCase == 0)
 				{
-					if((isStringEqual(currentString, "n") || isStringEqual(currentString, "north")))
+					if(currentString.equals("N") || currentString.equalsIgnoreCase("north"))
 					{
 						coordString[3] = "N";
 						directionFound = true;
 					}	
-					if((isStringEqual(currentString, "s") || isStringEqual(currentString, "south")))
+					if(currentString.equals("S") || currentString.equalsIgnoreCase("south"))
 					{
 						coordString[3] = "S";
 						directionFound = true;
 					}		
-					if((isStringEqual(currentString, "e") || isStringEqual(currentString, "east")))
+					if(currentString.equals("E") || currentString.equalsIgnoreCase("east"))
 					{
 						coordString[3] = "E";
 						directionFound = true;
 					}		
-					if((isStringEqual(currentString, "w") || isStringEqual(currentString, "west")))
+					if(currentString.equals("W") || currentString.equalsIgnoreCase("west"))
 					{
 						coordString[3] = "W";
 						directionFound = true;
@@ -165,9 +165,9 @@ public class World {
 				}
 				if(currentCase == 6)
 				{
-					if(isStringEqual(currentString, "d") || isStringEqual(currentString, "sec") ||
-					   isStringEqual(currentString, "second") || isStringEqual(currentString, "seconds")
-					   || isStringEqual(currentString, "\""))
+					if(currentString.equals("s") || currentString.equalsIgnoreCase("sec") || 
+							currentString.equalsIgnoreCase("second") || currentString.equalsIgnoreCase("seconds") || 
+							currentString.equalsIgnoreCase("sec"))
 					{
 						if(signed == false)
 						{
@@ -192,22 +192,22 @@ public class World {
 							coordString[coordCase] = currentCoordString;
 							coordCase += 2;
 						}
-						if(isStringEqual(currentString, "n") || isStringEqual(currentString, "north"))
+						if(currentString.equals("N") || currentString.equalsIgnoreCase("north"))
 						{
 							coordString[3] = "N";
 							currentCase += 2;
 						}	
-						else if(isStringEqual(currentString, "s") || isStringEqual(currentString, "south"))
+						else if(currentString.equals("S") || currentString.equalsIgnoreCase("south"))
 						{
 							coordString[3] = "S";
 							currentCase += 2;
 						}		
-						else if(isStringEqual(currentString, "e") || isStringEqual(currentString, "east"))
+						else if(currentString.equals("E") || currentString.equalsIgnoreCase("east"))
 						{
 							coordString[3] = "E";
 							currentCase += 2;
 						}		
-						else if(isStringEqual(currentString, "w") || isStringEqual(currentString, "west"))
+						else if(currentString.equals("W") || currentString.equalsIgnoreCase("west"))
 						{
 							coordString[3] = "W";
 							currentCase += 2;
@@ -220,22 +220,31 @@ public class World {
 					}
 					else if(directionFound == true)
 					{
-						if((isStringEqual(currentString, "n") || isStringEqual(currentString, "north")))
+						if(signed == false)
+						{
+							coordString[coordCase] = currentCoordString;
+							coordCase += 2;
+						}
+						if(!coordString[3].equals("N") && !coordString[3].equals("S") &&
+								(currentString.equals("N") || currentString.equalsIgnoreCase("north")))
 						{
 							coordString[7] = "N";
 							currentCase += 2;
 						}	
-						else if((isStringEqual(currentString, "s") || isStringEqual(currentString, "south")))
+						else if(!coordString[3].equals("N") && !coordString[3].equals("S") &&
+								(currentString.equals("S") || currentString.equalsIgnoreCase("south")))
 						{
 							coordString[7] = "S";
 							currentCase += 2;
 						}		
-						else if((isStringEqual(currentString, "e") || isStringEqual(currentString, "east")))
+						else if(!coordString[3].equals("E") && !coordString[3].equals("W") &&
+								(currentString.equals("E") || currentString.equalsIgnoreCase("east")))
 						{
 							coordString[7] = "E";
 							currentCase += 2;
 						}		
-						else if((isStringEqual(currentString, "w") || isStringEqual(currentString, "west")))
+						else if(!coordString[3].equals("E") && !coordString[3].equals("W") &&
+								(currentString.equals("W") || currentString.equalsIgnoreCase("west")))
 						{
 							coordString[7] = "W";
 							currentCase += 2;
@@ -250,23 +259,62 @@ public class World {
 				
 				if(currentCase == 14)
 				{
-					if(isStringEqual(currentString, "s") || isStringEqual(currentString, "sec") ||
-							   isStringEqual(currentString, "second") || isStringEqual(currentString, "seconds")
-							   || isStringEqual(currentString, "\""))
-							{
-								if(signed == false)
-								{
-									System.out.println("Input is invalid");
-									currentCase = 16;
-								}
-								coordString[coordCase] = currentCoordString;
-								coordCase += 2;
-								caseChangeBy += 1;
-							}
-							else
-							{
-								currentCase += 1;
-							}
+					if(currentString.equals("s") || currentString.equalsIgnoreCase("sec") || 
+							currentString.equalsIgnoreCase("second") || currentString.equalsIgnoreCase("seconds") || 
+							currentString.equalsIgnoreCase("sec"))
+					{
+					
+						if(signed == false)
+						{
+							System.out.println("Input is invalid");
+							currentCase = 16;
+						}
+						coordString[coordCase] = currentCoordString;
+						coordCase += 2;
+						caseChangeBy += 1;
+						}
+					else
+					{
+						 currentCase += 1;
+					}
+				}
+				if(currentCase == 15)
+				{
+					if(directionFound == false)
+					{
+						if(signed == false)
+						{
+							coordString[coordCase] = currentCoordString;
+						}
+						if(!coordString[3].equals("N") && !coordString[3].equals("S") && 
+								(currentString.equals("N") || currentString.equalsIgnoreCase("north")))
+						{
+							coordString[7] = "N";
+							currentCase += 1;
+						}	
+						else if(!coordString[3].equals("N") && !coordString[3].equals("S") && 
+								(currentString.equals("S") || currentString.equalsIgnoreCase("south")))
+						{
+							coordString[7] = "S";
+							currentCase += 1;
+						}		
+						else if(!coordString[3].equals("E") &&!coordString[3].equals("W") && 
+								(currentString.equals("E") || currentString.equalsIgnoreCase("east")))
+						{
+							coordString[7] = "E";
+							currentCase += 1;
+						}		
+						else if(!coordString[3].equals("E") && (currentString.equals("W") || currentString.equalsIgnoreCase("west")))
+						{
+							coordString[7] = "W";
+							currentCase += 1;
+						}	
+						else
+						{
+							System.out.println("Input is invalid");
+							currentCase = 16;
+						}
+					}
 				}
 			}
 			currentCase += caseChangeBy;
@@ -277,37 +325,6 @@ public class World {
 		{
 			System.out.println(coordString[i]);
 		}
-		System.out.println("\"");
 		scan.close();
 	} 
-	
-	//Function to check if two strings are equal disregarding whether the 
-	//char is capitalized or not.
-	public static boolean isStringEqual(String one, String two)
-	{
-		if(one.length() != two.length())
-		{
-			return false;
-		}
-		for(int i = 0; i < one.length(); i++)
-		{
-			int charOne = one.charAt(i);
-			int charTwo = two.charAt(i);
-			
-			if(charOne < 97)
-			{
-				charOne += 32;
-			}
-			if(charTwo < 97)
-			{
-				charTwo += 32;
-			}
-			
-			if(charOne != charTwo)
-			{
-				return false;
-			}
-		}
-		return true;
-	}
 }
