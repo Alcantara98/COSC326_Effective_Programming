@@ -22,25 +22,17 @@ public class World {
 		
 		int coordCase = 0;
 		boolean signed = false;
+		boolean foundFirstDeg = false;
+		boolean foundSecondDeg = false;
+		boolean asterisk = false;
 		for(int currentCase = 0; currentCase < 16 && currentCoord < inputLength;)
 		{
 			boolean isWord = false;
 			char currentChar = dumbCoordinate.charAt(currentCoord);
 			
-			if(currentChar == ',')
+			if(currentChar == ',' && currentCase != 6)
 			{
-				currentCase = 8;
-				coordCase = 4;
-				currentCoord += 1;
-				
-				if(currentCoord < inputLength)
-				{
-					currentChar = dumbCoordinate.charAt(currentCoord);
-				}
-				else 
-				{
-					break;
-				}
+				asterisk = true;
 			}
 			//Getting Rid of unwanted char characters that may have been accidentally been pressed
 			//and taking in alphabets only.
@@ -48,6 +40,10 @@ public class World {
 			while((currentChar < 48) || (currentChar > 57 && currentChar < 65) 
 					|| (currentChar > 90 && currentChar < 97) || (currentChar > 122))
 			{
+				if(currentChar != ' ' || currentChar != ',')
+				{
+					asterisk = true;
+				}
 				currentCoord += 1;
 				
 				if(currentCoord < inputLength)
@@ -66,7 +62,7 @@ public class World {
 			if((currentChar > 64 && currentChar < 91) || (currentChar > 96 && currentChar < 123))
 			{
 				isWord = true;
-		
+				
 				while((currentChar > 64 && currentChar < 91) || (currentChar > 96 && currentChar < 123)) 
 				{
 					currentString += currentChar;
@@ -80,7 +76,6 @@ public class World {
 					{
 						break;
 					}
-					
 				}
 			}
 			
@@ -117,6 +112,10 @@ public class World {
 				else if(currentCase == 2 || currentCase == 4 || currentCase == 6 || 
 						currentCase == 10 || currentCase == 12)
 				{		
+					if(currentCase == 2)
+					{
+						foundFirstDeg = true;
+					}
 					if(currentCase == 6)
 					{
 						currentCase += 2;
@@ -149,7 +148,7 @@ public class World {
 			//Cases: Direction, Coord, CoordType, Coord, CoordType, Coord, CoordType, Direction, Comma (not a case), Direction, Coord, CoordType, Coord, CoordType, Coord, CoorType, Direction
 			//Index: 0,         1,     2,         3,     4,         5,     6,         7,                             8,         9,     10,        11,    12,        13,    14,       15   
 			if(isWord == true) 
-			{                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+			{                  
 				if(currentCase == 0)
 				{
 					if(currentString.equals("N") || currentString.equalsIgnoreCase("north"))
@@ -176,9 +175,11 @@ public class World {
 				if(currentCase == 2)
 				{
 					if(currentString.equalsIgnoreCase("d") || currentString.equalsIgnoreCase("deg") || 
-							currentString.equalsIgnoreCase("degree") || currentString.equalsIgnoreCase("degrees"))
+							currentString.equalsIgnoreCase("degree") || currentString.equalsIgnoreCase("degrees") ||
+							currentString.equals("°"))
 					{
 						signed = true;
+						foundFirstDeg = true;
 						coordString[coordCase] = currentCoordString;
 						coordCase += 1;
 						currentCase += 1;
@@ -186,14 +187,20 @@ public class World {
 					else
 					{
 						currentCase += 2;
+						coordCase += 1;
 					}
 						
 				}
 				if(currentCase == 4)
 				{
 					if(currentString.equalsIgnoreCase("m") || currentString.equalsIgnoreCase("min") || 
-							currentString.equalsIgnoreCase("minute") || currentString.equalsIgnoreCase("minutesn"))
+							currentString.equalsIgnoreCase("minute") || currentString.equalsIgnoreCase("minutesn") ||
+							currentString.equals("'"))
 					{
+						if(foundFirstDeg == false)
+						{
+							signed = true;
+						}
 						if(signed == false)
 						{
 							System.out.println("Input is invalid 1");
@@ -201,18 +208,25 @@ public class World {
 						}
 						coordString[coordCase] = currentCoordString;
 						coordCase += 1;
-						currentCase += 1;
+						caseChangeBy += 1;
 					}
 					else
 					{
 						currentCase += 2;
+						coordCase += 1;
 					}
-						
+				}
+				//This is needed when there is only degrees and minutes without seconds, skips the third coordinate
+				if(currentCase == 5)
+				{
+					currentCase += 2;
+					coordCase += 2;
 				}
 				if(currentCase == 6)
 				{
 					if(currentString.equalsIgnoreCase("s") || currentString.equalsIgnoreCase("sec") || 
-							currentString.equalsIgnoreCase("second") || currentString.equalsIgnoreCase("seconds"))
+							currentString.equalsIgnoreCase("second") || currentString.equalsIgnoreCase("seconds") ||
+							currentString.equals("\""))
 					{
 						if(signed == false)
 						{
@@ -232,6 +246,7 @@ public class World {
 				{
 					if(directionFound == false)
 					{
+						//If not signed, this ensures that the third coordinate gets recorded
 						if(signed == false)
 						{
 							coordString[coordCase] = currentCoordString;
@@ -318,6 +333,7 @@ public class World {
 					else
 					{
 						currentCase += 2;
+						coordCase += 1;
 					}
 						
 				}
@@ -333,13 +349,18 @@ public class World {
 						}
 						coordString[coordCase] = currentCoordString;
 						coordCase += 1;
-						currentCase += 1;
+						caseChangeBy += 1;
 					}
 					else
 					{
 						currentCase += 2;
+						coordCase += 1;
 					}
-						
+				}
+				if(currentCase == 13)
+				{
+					currentCase += 2;
+					coordCase += 2;
 				}
 				if(currentCase == 14)
 				{
@@ -394,7 +415,7 @@ public class World {
 						}	
 						else
 						{
-							System.out.println("Input is invalid 8");
+							System.out.println("Input is invalid 8" + currentString + currentCoordString);
 							currentCase = 16;
 						}
 					}
@@ -403,6 +424,10 @@ public class World {
 			currentCase += caseChangeBy;
 			caseChangeBy = 0;
 			currentString = "";
+			if(currentCase < 7 && currentCoord >= inputLength)
+			{
+				System.out.println("Input is invalid 9");
+			}
 		}
 		for(int i = 0; i < 8; i++)
 		{
