@@ -9,29 +9,34 @@ public class World {
 		
 		String coordString[] = {"0", "0", "0", "N", "0", "0", "0", "E"};
 		
-		int inputLength = dumbCoordinate.length();
-		
-		int currentCoord = 0;
-		
-		//For knowing if we have found the direction already, otherwise
-		//to ensure we don't have conflicting directions.
-		boolean directionFound = false;
-		
 		String currentString = "";
+		
 		String currentCoordString = "0";
 		
+		int inputLength = dumbCoordinate.length();
+		
+		int currentIndex = 0; //Our index through dumbCoordinate
+		
+		int caseChangeBy = 0;
+		
 		int coordCase = 0;
-		boolean signed = false;
+		
+		boolean directionFound = false; //So we know if we are expecting N, S, E, W for the second part
+		boolean signed = false; //Coordinates will have deg, min, sec, etc.
+		
+		//We need these info so we know whether to make signed = true if we skipped degrees or minutes
 		boolean foundFirstDeg = false;
 		boolean foundSecondDeg = false;
 		boolean foundFirstMin = false;
 		boolean foundSecondMin = false;
+		
+		// If true, we ask if our interpretation is what they meant
 		boolean asterisk = false;
-		int caseChangeBy = 0;
-		for(int currentCase = 0; currentCase < 16 && currentCoord < inputLength;)
+		
+		for(int currentCase = 0; currentCase < 16 && currentIndex < inputLength;)
 		{
 			boolean isWord = false;
-			char currentChar = dumbCoordinate.charAt(currentCoord);
+			char currentChar = dumbCoordinate.charAt(currentIndex);
 			
 			if(currentChar == ',')
 			{
@@ -48,15 +53,14 @@ public class World {
 				{
 					asterisk = true;
 				}
-				currentCoord += 1;
+				currentIndex += 1;
 				
-				if(currentCoord < inputLength)
+				if(currentIndex < inputLength)
 				{
-					currentChar = dumbCoordinate.charAt(currentCoord);
+					currentChar = dumbCoordinate.charAt(currentIndex);
 				}
 				else 
 				{
-					coordString[coordCase] = currentCoordString;
 					break;
 				}
 			}
@@ -70,11 +74,11 @@ public class World {
 				while((currentChar > 64 && currentChar < 91) || (currentChar > 96 && currentChar < 123)) 
 				{
 					currentString += currentChar;
-					currentCoord += 1;
+					currentIndex += 1;
 					
-					if(currentCoord < inputLength)
+					if(currentIndex < inputLength)
 					{
-						currentChar = dumbCoordinate.charAt(currentCoord);
+						currentChar = dumbCoordinate.charAt(currentIndex);
 					}
 					else 
 					{
@@ -93,11 +97,11 @@ public class World {
 				while(isWord == false && ((currentChar > 47 && currentChar < 58) || (currentChar == 46 && decimal == false)))
 				{
 					newCoord += currentChar;
-					currentCoord += 1;
+					currentIndex += 1;
 					
-					if(currentCoord < inputLength)
+					if(currentIndex < inputLength)
 					{
-						currentChar = dumbCoordinate.charAt(currentCoord);
+						currentChar = dumbCoordinate.charAt(currentIndex);
 					}
 					else 
 					{
@@ -144,7 +148,7 @@ public class World {
 				currentCoordString = newCoord;
 				currentCase += 1;
 				
-				if(currentCoord == inputLength && currentCase == 14)
+				if(currentIndex == inputLength && currentCase == 14)
 				{
 					coordString[coordCase] = currentCoordString;
 				}
@@ -259,77 +263,47 @@ public class World {
 				}
 				if(currentCase == 7)
 				{
-					if(directionFound == false)
+					int directionIndex = 3;
+					if(directionFound == true)
 					{
-						//If not signed, this ensures that the third coordinate gets recorded
-						if(signed == false)
-						{
-							coordString[coordCase] = currentCoordString;
-							coordCase += 2;
-						}
-						if(currentString.equals("N") || currentString.equalsIgnoreCase("north"))
-						{
-							coordString[3] = "N";
-							currentCase += 2;
-						}	
-						else if(currentString.equals("S") || currentString.equalsIgnoreCase("south"))
-						{
-							coordString[3] = "S";
-							currentCase += 2;
-						}		
-						else if(currentString.equals("E") || currentString.equalsIgnoreCase("east"))
-						{
-							coordString[3] = "E";
-							currentCase += 2;
-						}		
-						else if(currentString.equals("W") || currentString.equalsIgnoreCase("west"))
-						{
-							coordString[3] = "W";
-							currentCase += 2;
-						}	
-						else
-						{
+						directionIndex = 7;
+					}
+					else
+					{
+						directionFound = true;
+					}
+					//If not signed, this ensures that the third coordinate gets recorded
+					if(signed == false)
+					{
+						coordString[coordCase] = currentCoordString;
+						coordCase += 2;
+					}
+					if(currentString.equals("N") || currentString.equalsIgnoreCase("north"))
+					{
+						coordString[directionIndex] = "N";
+						currentCase += 2;
+					}	
+					else if(currentString.equals("S") || currentString.equalsIgnoreCase("south"))
+					{
+						coordString[directionIndex] = "S";
+						currentCase += 2;
+					}		
+					else if(currentString.equals("E") || currentString.equalsIgnoreCase("east"))
+					{
+						coordString[directionIndex] = "E";
+						currentCase += 2;
+					}		
+					else if(currentString.equals("W") || currentString.equalsIgnoreCase("west"))
+					{
+						coordString[directionIndex] = "W";
+						currentCase += 2;
+					}	
+					else
+					{
 							System.out.println("Input is invalid 3" + currentString);
 							currentCase = 16;
-						}
 					}
-					else if(directionFound == true)
-					{
-						if(signed == false)
-						{
-							coordString[coordCase] = currentCoordString;
-							coordCase += 2;
-						}
-						if(!coordString[3].equals("N") && !coordString[3].equals("S") &&
-								(currentString.equals("N") || currentString.equalsIgnoreCase("north")))
-						{
-							coordString[7] = "N";
-							currentCase += 2;
-						}	
-						else if(!coordString[3].equals("N") && !coordString[3].equals("S") &&
-								(currentString.equals("S") || currentString.equalsIgnoreCase("south")))
-						{
-							coordString[7] = "S";
-							currentCase += 2;
-						}		
-						else if(!coordString[3].equals("E") && !coordString[3].equals("W") &&
-								(currentString.equals("E") || currentString.equalsIgnoreCase("east")))
-						{
-							coordString[7] = "E";
-							currentCase += 2;
-						}		
-						else if(!coordString[3].equals("E") && !coordString[3].equals("W") &&
-								(currentString.equals("W") || currentString.equalsIgnoreCase("west")))
-						{
-							coordString[7] = "W";
-							currentCase += 2;
-						}
-						else
-						{
-							System.out.println("Input is invalid 4");
-							currentCase = 16;
-						}
-					}
+
 				}
 				if(currentCase == 10)
 				{
@@ -397,7 +371,7 @@ public class World {
 							currentCase = 16;
 						}
 						coordString[coordCase] = currentCoordString;
-						coordCase += 2;
+						coordCase += 1;
 						caseChangeBy += 1;
 						}
 					else
@@ -438,7 +412,7 @@ public class World {
 						}	
 						else
 						{
-							System.out.println("Input is invalid 8" + currentString + currentCoordString);
+							System.out.println("Input is invalid 8");
 							currentCase = 16;
 						}
 					}
@@ -447,9 +421,20 @@ public class World {
 			currentCase += caseChangeBy;
 			caseChangeBy = 0;
 			currentString = "";
-			if(currentCase < 8 && currentCoord >= inputLength)
+			
+			if(coordCase < 7 && currentCase == 14)
+			{
+				coordString[coordCase] = currentCoordString;
+				coordCase += 1;
+			}
+			if(currentCase < 8 && currentIndex >= inputLength)
 			{
 				System.out.println("Which direction? Options to type: N, S, E, W");
+				asterisk = true;
+			}
+			else if(currentCase < 14 && currentIndex >= inputLength)
+			{
+				System.out.println("Input is invalid 9");
 			}
 		}
 		for(int i = 0; i < 8; i++)
