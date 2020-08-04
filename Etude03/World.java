@@ -7,7 +7,7 @@ public class World {
 		
 		String dumbCoordinate = scan.nextLine();
 		
-		//
+		//We convert these to double later, string now for faster development
 		String coordString[] = {"0", "0", "0", "N", "0", "0", "0", "E"};
 		
 		String currentString = "";
@@ -452,6 +452,7 @@ public class World {
 			caseChangeBy = 0;
 			currentString = "";
 			
+			//This ensures that we record the last coordinate
 			if(coordCase < 7 && (isLast || currentIndex >= inputLength) && 
 					(currentCase == 2 || currentCase == 4| currentCase == 6 || currentCase == 10 || currentCase == 12 || currentCase == 14))
 			{
