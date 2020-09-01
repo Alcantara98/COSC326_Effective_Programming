@@ -162,7 +162,7 @@ public class World {
 					currentChar = inputCoordinate.charAt(currentIndex);
 				} else {
 					if (coordsFound == 0) {
-						System.out.println("1");
+						// System.out.println("1");
 						invalidInput = true;
 					}
 					isLast = true;
@@ -231,7 +231,7 @@ public class World {
 							currentCase += 2;
 						}
 						if (signed == true) {
-							System.out.println("2");
+							// System.out.println("2");
 							invalidInput = true;
 							currentCase = 16;
 						}
@@ -336,7 +336,7 @@ public class World {
 							signed = true;
 						}
 						if (signed == false) {
-							System.out.println("3");
+							// System.out.println("3");
 							invalidInput = true;
 							currentCase = 16;
 						}
@@ -369,7 +369,7 @@ public class World {
 						}
 						// Because if s or S, then it is probably a direction, so we move to next case.
 						if (signed == false && !currentString.equalsIgnoreCase("s")) {
-							System.out.println("4");
+							// System.out.println("4");
 							invalidInput = true;
 							currentCase = 16;
 						}
@@ -388,7 +388,7 @@ public class World {
 				}
 				if (currentCase == 7) {
 					if (lookingForSign == true) {
-						System.out.println("5");
+						// System.out.println("5");
 						invalidInput = true;
 					} else {
 						int directionIndex = 3;
@@ -414,7 +414,7 @@ public class World {
 							coordString[directionIndex] = "W";
 							currentCase += 2;
 						} else {
-							System.out.println("6");
+							// System.out.println("6");
 							invalidInput = true;
 							currentCase = 16;
 						}
@@ -444,7 +444,7 @@ public class World {
 							confusedS = false;
 						}
 						if (signed == false) {
-							System.out.println("7");
+							// System.out.println("7");
 							invalidInput = true;
 							currentCase = 16;
 						}
@@ -472,7 +472,7 @@ public class World {
 							confusedS = false;
 						}
 						if (signed == false) {
-							System.out.println("8");
+							// System.out.println("8");
 							invalidInput = true;
 							currentCase = 16;
 						}
@@ -499,7 +499,7 @@ public class World {
 							confusedS = false;
 						}
 						if (signed == false) {
-							System.out.println("9");
+							// System.out.println("9");
 							invalidInput = true;
 							currentCase = 16;
 						}
@@ -514,7 +514,7 @@ public class World {
 				}
 				if (currentCase == 15) {
 					if (lookingForSign == true) {
-						System.out.println("10 " + currentString + " " + currentCoordString);
+						// System.out.println("10 ");
 						invalidInput = true;
 					} else {
 						if (confusedS) {
@@ -553,7 +553,7 @@ public class World {
 								coordString[7] = "W";
 								currentCase += 1;
 							} else {
-								System.out.println("11");
+								// System.out.println("11");
 								invalidInput = true;
 								currentCase = 16;
 							}
@@ -570,7 +570,7 @@ public class World {
 							|| currentCase == 12 || currentCase == 14)) {
 				coordString[coordCase] = currentCoordString;
 				if (coordsFound == 0) {
-					System.out.println("12");
+					// System.out.println("12");
 					invalidInput = true;
 				}
 				coordsFound += 1;
@@ -590,7 +590,7 @@ public class World {
 
 			// This deals with the case when there is no comma and there are 3 digits
 			if (currentCase == 6 && currentIndex >= inputLength) {
-				System.out.println("Which direction? Options to type: N, S, E, W");
+				// System.out.println("Which direction? Options to type: N, S, E, W");
 				// Scanner scan2 = new Scanner(System.in);
 				String userInput = "N";
 				if (userInput.equalsIgnoreCase("N") || userInput.equalsIgnoreCase("S")) {
@@ -601,7 +601,7 @@ public class World {
 					coordString[7] = "N";
 				}
 			} else if (currentCase < 14 && currentCase > 9 && currentIndex >= inputLength && hasComma == false) {
-				System.out.println("13");
+				// System.out.println("13");
 				invalidInput = true;
 			}
 
@@ -610,7 +610,7 @@ public class World {
 			if (currentCase >= 16) {
 				while (currentIndex < inputLength) {
 					if (inputCoordinate.charAt(currentIndex) != ' ') {
-						System.out.println("14");
+						// System.out.println("14");
 						invalidInput = true;
 						break;
 					}
@@ -627,9 +627,9 @@ public class World {
 			System.out.println("Unable to process: " + inputCoordinate);
 		}
 
-		for (String a : coordString) {
-			System.out.println(a);
-		}
+		/*
+		 * for (String a : coordString) { System.out.println(a); }
+		 */
 
 		convertStandard(coordString);
 	}
@@ -663,7 +663,6 @@ public class World {
 				floatCoord[0] = deg2 + (min2 + sec2 / 60) / 60;
 				floatCoord[1] = deg1 + (min1 + sec1 / 60) / 60;
 			}
-			System.out.println(directionFound);
 			if (Math.abs(floatCoord[1]) > 90 || (directionFound && (floatCoord[0] < 0 || floatCoord[1] < 0))) {
 				System.out.println("Unable to process: " + inputCoordinate);
 			} else {
