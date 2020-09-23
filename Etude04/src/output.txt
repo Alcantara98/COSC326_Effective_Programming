@@ -1,0 +1,929 @@
+
+eeefft enrive ehinor feower oortuw fouth v to 
+
+eeefft 
+
+eeefft ehinor oortuw v to 
+
+eeefft ehinor 
+
+eeefft ehinor oortuw v to 
+
+eeefft ehinor oortuw 
+
+eeefft ehinor oortuw v 
+
+eeefft ehinor oortuw v 
+
+eeefft ehinor oortuw v 
+3
+0 0 1 2 3 
+0 6 12 18 19 
+eeefft ehinor oortuw v 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0,   ;  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,   ;  
+
+3
+0 0 1 2 
+0 6 12 18 
+eeefft ehinor oortuw 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0,   ;  
+
+3
+0 0 1 2 
+0 6 12 18 
+eeefft ehinor oortuw 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0,   ;  
+
+2
+0 0 1 
+0 6 12 
+eeefft ehinor 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,   ;  
+
+
+eeefft ehinor oortuw v 
+
+eeefft ehinor oortuw v to 
+4
+0 0 1 3 
+0 6 12 13 
+eeefft ehinor v 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1,   ;  
+
+3
+0 0 1 
+0 6 12 
+eeefft ehinor 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,   ;  
+
+
+eeefft ehinor oortuw v to 
+
+eeefft ehinor oortuw v to 
+4
+0 0 1 4 
+0 6 12 14 
+eeefft ehinor to 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0,   ;  
+
+4
+0 0 1 
+0 6 12 
+eeefft ehinor 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,   ;  
+
+4
+0 0 1 
+0 6 12 
+eeefft ehinor 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,   ;  
+
+1
+0 0 
+0 6 
+eeefft 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  
+
+
+eeefft ehinor oortuw 
+
+eeefft ehinor oortuw v 
+
+eeefft ehinor oortuw v 
+
+eeefft ehinor oortuw v 
+3
+0 0 2 3 
+0 6 12 13 
+eeefft oortuw v 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0,   ;  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1,   ;  
+
+3
+0 0 2 
+0 6 12 
+eeefft oortuw 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0,   ;  
+
+3
+0 0 2 
+0 6 12 
+eeefft oortuw 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0,   ;  
+
+2
+0 0 
+0 6 
+eeefft 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  
+
+
+eeefft ehinor oortuw v 
+
+eeefft ehinor oortuw v to 
+
+eeefft ehinor oortuw v to 
+
+eeefft ehinor oortuw v to 
+4
+0 0 3 4 
+0 6 7 9 
+eeefft v to 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,   ;  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1,   ;  
+
+4
+0 0 3 
+0 6 7 
+eeefft v 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,   ;  
+
+4
+0 0 3 
+0 6 7 
+eeefft v 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,   ;  
+
+3
+0 0 
+0 6 
+eeefft 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  
+
+
+eeefft ehinor oortuw v to 
+
+eeefft ehinor oortuw v to 
+4
+0 0 4 
+0 6 8 
+eeefft to 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0,   ;  
+
+4
+0 0 
+0 6 
+eeefft 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  
+
+4
+0 0 
+0 6 
+eeefft 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  
+
+0
+0 
+0 
+
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  
+
+
+eeefft enrive 
+
+eeefft enrive feower oortuw fouth to 
+
+eeefft enrive feower 
+
+eeefft enrive feower fouth to 
+
+eeefft enrive feower fouth 
+
+eeefft enrive feower fouth to 
+
+eeefft enrive feower fouth to 
+
+eeefft enrive feower fouth to 
+4
+0 1 2 3 4 
+0 6 12 17 19 
+enrive feower fouth to 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1,   ;  1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1,   ;  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1,   ;  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,   ;  
+
+4
+0 1 2 3 
+0 6 12 17 
+enrive feower fouth 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1,   ;  1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1,   ;  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1,   ;  
+
+4
+0 1 2 3 
+0 6 12 17 
+enrive feower fouth 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1,   ;  1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1,   ;  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1,   ;  
+
+3
+0 1 2 
+0 6 12 
+enrive feower 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1,   ;  1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1,   ;  
+
+
+eeefft enrive feower fouth to 
+
+eeefft enrive feower fouth to 
+4
+0 1 2 4 
+0 6 12 14 
+enrive feower to 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1,   ;  1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1,   ;  1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1,   ;  
+
+4
+0 1 2 
+0 6 12 
+enrive feower 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1,   ;  1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1,   ;  
+
+4
+0 1 2 
+0 6 12 
+enrive feower 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1,   ;  1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1,   ;  
+
+2
+0 1 
+0 6 
+enrive 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1,   ;  
+
+
+eeefft enrive feower oortuw 
+
+eeefft enrive feower oortuw to 
+
+eeefft enrive feower oortuw to 
+
+eeefft enrive feower oortuw to 
+4
+0 1 3 4 
+0 6 12 14 
+enrive oortuw to 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1,   ;  1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1,   ;  1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,   ;  
+
+4
+0 1 3 
+0 6 12 
+enrive oortuw 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1,   ;  1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1,   ;  
+
+4
+0 1 3 
+0 6 12 
+enrive oortuw 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1,   ;  1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1,   ;  
+
+3
+0 1 
+0 6 
+enrive 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1,   ;  
+
+
+eeefft enrive feower oortuw fouth 
+
+eeefft enrive feower oortuw fouth to 
+
+eeefft enrive feower oortuw fouth to 
+
+eeefft enrive feower oortuw fouth to 
+5
+0 1 4 5 
+0 6 11 13 
+enrive fouth to 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1,   ;  1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1,   ;  1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1,   ;  
+
+5
+0 1 4 
+0 6 11 
+enrive fouth 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1,   ;  1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1,   ;  
+
+5
+0 1 4 
+0 6 11 
+enrive fouth 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1,   ;  1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1,   ;  
+
+4
+0 1 
+0 6 
+enrive 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1,   ;  
+
+
+eeefft enrive feower oortuw fouth to 
+
+eeefft enrive feower oortuw fouth to 
+
+eeefft enrive feower oortuw fouth to 
+
+eeefft enrive feower oortuw fouth to 
+5
+0 1 5 5 
+0 6 8 10 
+enrive to to 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1,   ;  1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1,   ;  1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1,   ;  
+
+5
+0 1 5 
+0 6 8 
+enrive to 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1,   ;  1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1,   ;  
+
+5
+0 1 5 
+0 6 8 
+enrive to 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1,   ;  1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1,   ;  
+
+5
+0 1 
+0 6 
+enrive 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1,   ;  
+
+5
+0 1 
+0 6 
+enrive 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1,   ;  
+
+1
+0 
+0 
+
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  
+
+
+eeefft enrive ehinor 
+
+eeefft enrive ehinor feower oortuw v to 
+
+eeefft enrive ehinor feower 
+
+eeefft enrive ehinor feower v to 
+
+eeefft enrive ehinor feower v 
+
+eeefft enrive ehinor feower v to 
+5
+0 2 3 4 
+0 6 12 13 
+ehinor feower v 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0,   ;  1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1,   ;  
+
+4
+0 2 3 
+0 6 12 
+ehinor feower 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0,   ;  
+
+
+eeefft enrive ehinor feower v to 
+
+eeefft enrive ehinor feower v to 
+5
+0 2 3 5 
+0 6 12 14 
+ehinor feower to 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0,   ;  1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0,   ;  
+
+5
+0 2 3 
+0 6 12 
+ehinor feower 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0,   ;  
+
+5
+0 2 3 
+0 6 12 
+ehinor feower 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0,   ;  
+
+3
+0 2 
+0 6 
+ehinor 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,   ;  
+
+
+eeefft enrive ehinor feower oortuw 
+
+eeefft enrive ehinor feower oortuw v 
+
+eeefft enrive ehinor feower oortuw v 
+
+eeefft enrive ehinor feower oortuw v 
+5
+0 2 4 5 
+0 6 12 13 
+ehinor oortuw v 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,   ;  1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0,   ;  1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1,   ;  
+
+5
+0 2 4 
+0 6 12 
+ehinor oortuw 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,   ;  1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0,   ;  
+
+5
+0 2 4 
+0 6 12 
+ehinor oortuw 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,   ;  1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0,   ;  
+
+4
+0 2 
+0 6 
+ehinor 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,   ;  
+
+
+eeefft enrive ehinor feower oortuw v 
+
+eeefft enrive ehinor feower oortuw v to 
+
+eeefft enrive ehinor feower oortuw v to 
+
+eeefft enrive ehinor feower oortuw v to 
+6
+0 2 5 6 
+0 6 7 9 
+ehinor v to 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,   ;  1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1,   ;  1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1,   ;  
+
+6
+0 2 5 
+0 6 7 
+ehinor v 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,   ;  1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1,   ;  
+
+6
+0 2 5 
+0 6 7 
+ehinor v 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,   ;  1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1,   ;  
+
+5
+0 2 
+0 6 
+ehinor 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,   ;  
+
+
+eeefft enrive ehinor feower oortuw v to 
+
+eeefft enrive ehinor feower oortuw v to 
+
+eeefft enrive ehinor feower oortuw v to 
+
+eeefft enrive ehinor feower oortuw v to 
+6
+0 2 6 6 
+0 6 8 10 
+ehinor to to 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,   ;  1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0,   ;  1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0,   ;  
+
+6
+0 2 6 
+0 6 8 
+ehinor to 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,   ;  1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0,   ;  
+
+6
+0 2 6 
+0 6 8 
+ehinor to 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,   ;  1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0,   ;  
+
+6
+0 2 
+0 6 
+ehinor 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,   ;  
+
+6
+0 2 
+0 6 
+ehinor 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,   ;  
+
+2
+0 
+0 
+
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  
+
+
+eeefft enrive ehinor feower 
+
+eeefft enrive ehinor feower fouth v to 
+
+eeefft enrive ehinor feower fouth 
+
+eeefft enrive ehinor feower fouth v to 
+
+eeefft enrive ehinor feower fouth v 
+
+eeefft enrive ehinor feower fouth v to 
+6
+0 3 4 5 
+0 6 11 12 
+feower fouth v 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0,   ;  1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0,   ;  1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1,   ;  
+
+5
+0 3 4 
+0 6 11 
+feower fouth 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0,   ;  1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0,   ;  
+
+
+eeefft enrive ehinor feower fouth v to 
+
+eeefft enrive ehinor feower fouth v to 
+6
+0 3 4 6 
+0 6 11 13 
+feower fouth to 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0,   ;  1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0,   ;  1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0,   ;  
+
+6
+0 3 4 
+0 6 11 
+feower fouth 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0,   ;  1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0,   ;  
+
+6
+0 3 4 
+0 6 11 
+feower fouth 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0,   ;  1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0,   ;  
+
+4
+0 3 
+0 6 
+feower 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0,   ;  
+
+
+eeefft enrive ehinor feower fouth v 
+
+eeefft enrive ehinor feower fouth v to 
+
+eeefft enrive ehinor feower fouth v to 
+
+eeefft enrive ehinor feower fouth v to 
+6
+0 3 5 6 
+0 6 7 9 
+feower v to 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0,   ;  1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1,   ;  1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1,   ;  
+
+6
+0 3 5 
+0 6 7 
+feower v 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0,   ;  1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1,   ;  
+
+6
+0 3 5 
+0 6 7 
+feower v 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0,   ;  1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1,   ;  
+
+5
+0 3 
+0 6 
+feower 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0,   ;  
+
+
+eeefft enrive ehinor feower fouth v to 
+
+eeefft enrive ehinor feower fouth v to 
+
+eeefft enrive ehinor feower fouth v to 
+
+eeefft enrive ehinor feower fouth v to 
+6
+0 3 6 6 
+0 6 8 10 
+feower to to 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0,   ;  1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0,   ;  1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0,   ;  
+
+6
+0 3 6 
+0 6 8 
+feower to 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0,   ;  1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0,   ;  
+
+6
+0 3 6 
+0 6 8 
+feower to 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0,   ;  1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0,   ;  
+
+6
+0 3 
+0 6 
+feower 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0,   ;  
+
+6
+0 3 
+0 6 
+feower 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0,   ;  
+
+3
+0 
+0 
+
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  
+
+
+eeefft enrive ehinor feower oortuw 
+
+eeefft enrive ehinor feower oortuw v to 
+
+eeefft enrive ehinor feower oortuw v 
+
+eeefft enrive ehinor feower oortuw v to 
+
+eeefft enrive ehinor feower oortuw v to 
+
+eeefft enrive ehinor feower oortuw v to 
+6
+0 4 5 6 
+0 6 7 9 
+oortuw v to 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0,   ;  0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1,   ;  0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1,   ;  
+
+6
+0 4 5 
+0 6 7 
+oortuw v 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0,   ;  0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1,   ;  
+
+6
+0 4 5 
+0 6 7 
+oortuw v 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0,   ;  0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1,   ;  
+
+5
+0 4 
+0 6 
+oortuw 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0,   ;  
+
+
+eeefft enrive ehinor feower oortuw v to 
+
+eeefft enrive ehinor feower oortuw v to 
+6
+0 4 6 
+0 6 8 
+oortuw to 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0,   ;  0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0,   ;  
+
+6
+0 4 
+0 6 
+oortuw 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0,   ;  
+
+6
+0 4 
+0 6 
+oortuw 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0,   ;  
+
+4
+0 
+0 
+
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  
+
+
+eeefft enrive ehinor feower oortuw fouth 
+
+eeefft enrive ehinor feower oortuw fouth v to 
+
+eeefft enrive ehinor feower oortuw fouth v 
+
+eeefft enrive ehinor feower oortuw fouth v to 
+
+eeefft enrive ehinor feower oortuw fouth v to 
+
+eeefft enrive ehinor feower oortuw fouth v to 
+7
+0 5 6 7 
+0 5 6 8 
+fouth v to 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0,   ;  0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1,   ;  0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1,   ;  
+
+7
+0 5 6 
+0 5 6 
+fouth v 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0,   ;  0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1,   ;  
+
+7
+0 5 6 
+0 5 6 
+fouth v 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0,   ;  0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1,   ;  
+
+6
+0 5 
+0 5 
+fouth 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0,   ;  
+
+
+eeefft enrive ehinor feower oortuw fouth v to 
+
+eeefft enrive ehinor feower oortuw fouth v to 
+7
+0 5 7 
+0 5 7 
+fouth to 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0,   ;  0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0,   ;  
+
+7
+0 5 
+0 5 
+fouth 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0,   ;  
+
+7
+0 5 
+0 5 
+fouth 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0,   ;  
+
+5
+0 
+0 
+
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  
+
+
+eeefft enrive ehinor feower oortuw fouth v 
+
+eeefft enrive ehinor feower oortuw fouth v to 
+
+eeefft enrive ehinor feower oortuw fouth v to 
+
+eeefft enrive ehinor feower oortuw fouth v to 
+
+eeefft enrive ehinor feower oortuw fouth v to 
+
+eeefft enrive ehinor feower oortuw fouth v to 
+7
+0 6 7 7 
+0 1 3 5 
+v to to 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,   ;  0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1,   ;  0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1,   ;  
+
+7
+0 6 7 
+0 1 3 
+v to 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,   ;  0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1,   ;  
+
+7
+0 6 7 
+0 1 3 
+v to 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,   ;  0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1,   ;  
+
+7
+0 6 
+0 1 
+v 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,   ;  
+
+7
+0 6 
+0 1 
+v 
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,   ;  
+
+6
+0 
+0 
+
+eeefft ehinor oortuw v 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   ;  
+
+
+eeefft enrive ehinor feower oortuw fouth v to 
+
+eeefft enrive ehinor feower oortuw fouth v to 
+
+eeefft enrive ehinor feower oortuw fouth v to 
+
+eeefft enrive ehinor feower oortuw fouth v to 
+eeefftehinoroortuwv: eeefft ehinor oortuw v
