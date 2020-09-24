@@ -51,6 +51,7 @@ public class Anagram {
 	// current best.
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	private ArrayList<String> testCurrentAnagram;
 =======
 	private static ArrayList<String> testCurrentAnagram = new ArrayList<String>();
@@ -123,6 +124,11 @@ public class Anagram {
 	private static ArrayList<String> testCurrentAnagram = new ArrayList<String>();
 
 	// This will contain dictionaries for each layer.
+=======
+	private static ArrayList<String> testCurrentAnagram = new ArrayList<String>();
+
+	// This will contain dictionaries for each layer.
+>>>>>>> parent of 600dedf... Working Version Modular with Word Class Added
 	private static ArrayList<ArrayList<String>> dicArray = new ArrayList<ArrayList<String>>();
 
 	private static int bestSize = Integer.MAX_VALUE;
@@ -192,12 +198,16 @@ public class Anagram {
 				}
 			}
 		}
+<<<<<<< HEAD
+>>>>>>> parent of 600dedf... Working Version Modular with Word Class Added
+=======
 >>>>>>> parent of 600dedf... Working Version Modular with Word Class Added
 
 		/*
 		 * This iterates through the words we want to find anagrams for.
 		 */
 		for (int i = 0; i < words.size(); i++) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 			long startTime = System.nanoTime();
@@ -207,12 +217,16 @@ public class Anagram {
 =======
 			boolean printed = false;
 >>>>>>> parent of 600dedf... Working Version Modular with Word Class Added
+=======
+			boolean printed = false;
+>>>>>>> parent of 600dedf... Working Version Modular with Word Class Added
 			currentWord = "";
 			for (int j = 0; j < words.get(i).length(); j++) {
 				char c = words.get(i).charAt(j);
 				if (c >= 'a' && c <= 'z') {
 					currentWord = currentWord + c;
 				}
+<<<<<<< HEAD
 			}
 
 			wordLength = currentWord.length();
@@ -227,6 +241,18 @@ public class Anagram {
 >>>>>>> parent of 600dedf... Working Version Modular with Word Class Added
 			}
 
+=======
+			}
+
+			wordLength = currentWord.length();
+			currentTaken = new int[wordLength];
+			numberTaken = 0;
+
+			for (int j = 0; j < wordLength; j++) {
+				currentTaken[j] = 0;
+			}
+
+>>>>>>> parent of 600dedf... Working Version Modular with Word Class Added
 			numberTakenList.add(numberTaken);
 			takenChars.add(currentTaken.clone());
 			indexPoints.add(0);
@@ -243,7 +269,10 @@ public class Anagram {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 600dedf... Working Version Modular with Word Class Added
 				String dicWord = wholeDictionary.get(j);
 				int dicWordLength = dicWord.length();
 				boolean wordValid = true;
@@ -271,6 +300,9 @@ public class Anagram {
 				}
 				testCurrentTaken = currentTaken.clone();
 			}
+<<<<<<< HEAD
+>>>>>>> parent of 600dedf... Working Version Modular with Word Class Added
+=======
 >>>>>>> parent of 600dedf... Working Version Modular with Word Class Added
 			dicSize = smallDictionary.size();
 
@@ -278,6 +310,7 @@ public class Anagram {
 			for (int j = 0; j < dicSize; j++) {
 				String dicWord = smallDictionary.get(j);
 				int dicWordLength = dicWord.length();
+<<<<<<< HEAD
 <<<<<<< HEAD
 				if (testCurrentAnagram.size() + 1 < bestSize
 						|| (testCurrentAnagram.size() + 1 == bestSize && currentWord.size() - dicWordLength == 0)) {
@@ -295,6 +328,16 @@ public class Anagram {
 				boolean wordValid = true;
 
 				if (wordLength >= dicWordLength) {
+=======
+
+				boolean wordValid = true;
+				if (testCurrentAnagram.size() + 1 < bestSize || (testCurrentAnagram.size() + 1 == bestSize
+						&& testNumberTaken + dicWordLength == wordLength)) {
+					/*
+					 * The following loops will check if the current word from small dictionary can
+					 * be built using the remaining characters.
+					 */
+>>>>>>> parent of 600dedf... Working Version Modular with Word Class Added
 					for (int x = 0; x < dicWordLength; x++) {
 						boolean foundChar = false;
 						for (int y = 0; y < wordLength; y++) {
@@ -305,14 +348,23 @@ public class Anagram {
 								break;
 							}
 						}
+<<<<<<< HEAD
 						if (foundChar == false) {
 							wordValid = false;
+=======
+						// If one char is not found, then the word cannot be built.
+						if (foundChar == false) {
+							wordValid = false;
+							testNumberTaken = numberTaken;
+							testCurrentTaken = currentTaken.clone();
+>>>>>>> parent of 600dedf... Working Version Modular with Word Class Added
 							break;
 						}
 					}
 				} else {
 					wordValid = false;
 				}
+<<<<<<< HEAD
 				if (wordValid == true) {
 					smallDictionary.add(dicWord);
 				}
@@ -399,6 +451,9 @@ public class Anagram {
 						// }
 						// System.out.println("");
 =======
+=======
+
+>>>>>>> parent of 600dedf... Working Version Modular with Word Class Added
 				/*
 				 * If word is valid, we add the current state to our array lists which we could
 				 * fall back later. We are essentially doing a depth first search, and this
@@ -411,6 +466,9 @@ public class Anagram {
 					indexPoints.add(j);
 					takenChars.add(currentTaken.clone());
 					testCurrentAnagram.add(dicWord);
+<<<<<<< HEAD
+>>>>>>> parent of 600dedf... Working Version Modular with Word Class Added
+=======
 >>>>>>> parent of 600dedf... Working Version Modular with Word Class Added
 
 					/*
@@ -460,6 +518,7 @@ public class Anagram {
 						j -= 1;
 					}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 				/*
 				 * If word is valid, we add the current state to our array lists which we could
@@ -476,10 +535,15 @@ public class Anagram {
 					j -= 1;
 >>>>>>> parent of 3fe94e1... Anagram Working Version
 =======
+=======
+>>>>>>> parent of 600dedf... Working Version Modular with Word Class Added
 				} else {
 					wordValid = false;
 					testNumberTaken = numberTaken;
 					testCurrentTaken = currentTaken.clone();
+<<<<<<< HEAD
+>>>>>>> parent of 600dedf... Working Version Modular with Word Class Added
+=======
 >>>>>>> parent of 600dedf... Working Version Modular with Word Class Added
 				}
 
@@ -493,6 +557,7 @@ public class Anagram {
 						compareAnagrams();
 					}
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 					// int initial_J = j;
@@ -520,6 +585,10 @@ public class Anagram {
 					int initial_J = j;
 					int initialSize = indexPoints.size();
 >>>>>>> parent of 600dedf... Working Version Modular with Word Class Added
+=======
+					int initial_J = j;
+					int initialSize = indexPoints.size();
+>>>>>>> parent of 600dedf... Working Version Modular with Word Class Added
 
 					/*
 					 * Once we reach the end of the dictionary, we are always guaranteed to always
@@ -534,6 +603,7 @@ public class Anagram {
 					 * different otherwise the for loop will end.
 					 */
 					do {
+<<<<<<< HEAD
 <<<<<<< HEAD
 						j = indexPoints.get(indexPoints.size() - 1);
 						moveBack();
@@ -574,6 +644,18 @@ public class Anagram {
 				}
 			}
 >>>>>>> parent of 600dedf... Working Version Modular with Word Class Added
+=======
+						if (indexPoints.size() == 1 || (initial_J != dicSize - 1 && initialSize != 2
+								&& indexPoints.size() == 2 && initial_J == indexPoints.get(1))) {
+							break;
+						} else {
+							j = indexPoints.get(indexPoints.size() - 1);
+							moveBack();
+						}
+					} while (j == initial_J);
+				}
+			}
+>>>>>>> parent of 600dedf... Working Version Modular with Word Class Added
 
 			if (!printed) {
 				String anagram = "";
@@ -591,6 +673,7 @@ public class Anagram {
 			smallDictionary.clear();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 			bestSize = Integer.MAX_VALUE;
 			dicArray.clear();
 			currentWordList.clear();
@@ -604,6 +687,12 @@ public class Anagram {
 			bestSize = Integer.MAX_VALUE;
 >>>>>>> parent of 600dedf... Working Version Modular with Word Class Added
 		}
+=======
+			dicArray.clear();
+			bestSize = Integer.MAX_VALUE;
+		}
+
+>>>>>>> parent of 600dedf... Working Version Modular with Word Class Added
 	}
 
 	/**
@@ -619,6 +708,7 @@ public class Anagram {
 			testCurrentAnagram.remove(testCurrentAnagram.size() - 1);
 		}
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 		// smallDictionary = new ArrayList<Words>(dicArray.get(dicArray.size() - 1));
@@ -649,6 +739,19 @@ public class Anagram {
 
 		dicSize = smallDictionary.size();
 >>>>>>> parent of 600dedf... Working Version Modular with Word Class Added
+=======
+		int[] duplicate = takenChars.get(takenChars.size() - 1);
+		currentTaken = duplicate.clone();
+
+		numberTaken = numberTakenList.get(numberTakenList.size() - 1);
+		testCurrentTaken = currentTaken.clone();
+		testNumberTaken = numberTaken;
+
+		smallDictionary = new ArrayList<String>(dicArray.get(dicArray.size() - 1));
+		dicArray.remove(dicArray.size() - 1);
+
+		dicSize = smallDictionary.size();
+>>>>>>> parent of 600dedf... Working Version Modular with Word Class Added
 	}
 
 	/**
@@ -656,7 +759,11 @@ public class Anagram {
 	 */
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public ArrayList<String> sortAnagram(ArrayList<String> anagram) {
+=======
+	public static ArrayList<String> sortAnagram(ArrayList<String> anagram) {
+>>>>>>> parent of 600dedf... Working Version Modular with Word Class Added
 =======
 	public static ArrayList<String> sortAnagram(ArrayList<String> anagram) {
 >>>>>>> parent of 600dedf... Working Version Modular with Word Class Added
