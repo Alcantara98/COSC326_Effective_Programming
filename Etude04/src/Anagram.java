@@ -58,7 +58,6 @@ public class Anagram {
 		currentWordList = new ArrayList<ArrayList<Character>>();
 		testCurrentAnagram = new ArrayList<String>();
 		dicArray = new ArrayList<ArrayList<Words>>();
-		currentWordDics = new ArrayList<ArrayList<Character>>();
 	}
 
 	public void run() {
@@ -111,13 +110,13 @@ public class Anagram {
 						 * have fewer available characters, it would be useless to keep all words in the
 						 * current dictionary.
 						 */
-						dicArray.add(new ArrayList<Words>(smallDictionary));
+						// dicArray.add(new ArrayList<Words>(smallDictionary));
 
-						// System.out.print("Index: " + j + " Before: " + dicSize + " ");
-						ArrayList<Words> dicTemp = new ArrayList<Words>(smallDictionary.subList(j, dicSize));
-						smallDictionary.clear();
-						reduceDictionary(dicTemp, smallDictionary, currentWord);
-						dicSize = smallDictionary.size();
+						// // System.out.print("Index: " + j + " Before: " + dicSize + " ");
+						// ArrayList<Words> dicTemp = new ArrayList<Words>(smallDictionary.subList(j, dicSize));
+						// smallDictionary.clear();
+						// reduceDictionary(dicTemp, smallDictionary, currentWord);
+						// dicSize = smallDictionary.size();
 
 						// System.out.print("After: " + dicSize + "\n");
 
@@ -283,10 +282,10 @@ public class Anagram {
 			testCurrentAnagram.remove(testCurrentAnagram.size() - 1);
 		}
 
-		smallDictionary = new ArrayList<Words>(dicArray.get(dicArray.size() - 1));
-		dicArray.remove(dicArray.size() - 1);
+		// smallDictionary = new ArrayList<Words>(dicArray.get(dicArray.size() - 1));
+		// dicArray.remove(dicArray.size() - 1);
 
-		dicSize = smallDictionary.size();
+		// dicSize = smallDictionary.size();
 
 		currentWord = new ArrayList<Character>(currentWordList.get(currentWordList.size() - 1));
 		currentWordList.remove(currentWordList.size() - 1);
