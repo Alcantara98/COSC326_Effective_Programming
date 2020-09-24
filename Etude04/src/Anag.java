@@ -19,7 +19,7 @@ import java.util.ArrayList;
  * @author Elbert Alcantara
  * @author Minh Tran
  */
-public class Anagram {
+public class Anag {
 	// Contains all the words from the input dictionary.
 	private ArrayList<Words> wholeDictionary;
 
@@ -51,7 +51,7 @@ public class Anagram {
 	private int dicSize;
 	private int bestSize = Integer.MAX_VALUE;
 
-	public Anagram(ArrayList<Words> wholeDictionaryInput, ArrayList<Words> wordsInput) {
+	public Anag(ArrayList<Words> wholeDictionaryInput, ArrayList<Words> wordsInput) {
 		wholeDictionary = new ArrayList<Words>(wholeDictionaryInput);
 		words = new ArrayList<Words>(wordsInput);
 		smallDictionary = new ArrayList<Words>();
@@ -79,7 +79,7 @@ public class Anagram {
 			 * This for loop finds words in the dictionary that could be built using the
 			 * characters in the current word.
 			 */
-			reduceDictionary(wholeDictionary, smallDictionary);
+			reduceDictionary(wholeDictionary);
 
 			dicSize = smallDictionary.size();
 
@@ -120,7 +120,7 @@ public class Anagram {
 						// System.out.print("Index: " + j + " Before: " + dicSize + " ");
 						ArrayList<Words> dicTemp = new ArrayList<Words>(smallDictionary.subList(j, dicSize));
 						smallDictionary.clear();
-						reduceDictionary(dicTemp, smallDictionary);
+						reduceDictionary(dicTemp);
 						dicSize = smallDictionary.size();
 
 						if (currentWord.size() == 0) {
@@ -183,30 +183,31 @@ public class Anagram {
 
 	}
 
-	public ArrayList<Words> reduceDictionary(ArrayList<Words> dictionary, ArrayList<Words> newDictionary) {
+	public ArrayList<Words> reduceDictionary(ArrayList<Words> dictionary) {
+
 		for (int i = 0; i < dictionary.size(); i++) {
 			Words wordCurrent = dictionary.get(i);
-			//ArrayList<Character> currentWordTemp;
+			ArrayList<Character> currentWordTemp = new ArrayList<Character>(currentWord);
 			if (wordCurrent.length() <= currentWord.size()) {
-				//currentWordTemp = new ArrayList<Character>(currentWord);
 				int j = 0;
 				int k = 0;
-				while (j < wordCurrent.length() && k < currentWord.size()) {
+				while (j < wordCurrent.length() && k < currentWordTemp.size()) {
 					if (wordCurrent.charAt(j) == currentWord.get(k)) {
+						currentWordTemp.remove(k);
 						j++;
-						k++;
-					} else if (wordCurrent.charAt(j) < currentWord.get(k)) {
+					} else if (wordCurrent.charAt(j) < currentWordTemp.get(k)) {
 						break;
 					} else {
 						k++;
 					}
 				}
 				if (j == wordCurrent.length()) {
-					newDictionary.add(wordCurrent);
+					smallDictionary.add(wordCurrent);
+					currentAvailable.add(currentWordTemp);
 				}
 			}
 		}
-		return newDictionary;
+		return smallDictionary;
 	}
 
 	/**
