@@ -103,6 +103,7 @@ public class Anagram {
 
 	ArrayList<Character> currentWord;
 	private ArrayList<ArrayList<Character>> currentWordList;
+	private ArrayList<ArrayList<Character>> currentWordDics;
 
 	// This will contain dictionaries for each layer.
 	private ArrayList<ArrayList<Words>> dicArray;
