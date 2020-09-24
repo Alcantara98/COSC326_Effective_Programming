@@ -71,28 +71,28 @@ public class Anagram {
 		currentAvailableList = new ArrayList<ArrayList<ArrayList<Character>>>();
 	}
 
+	/**
+	 * We go through the dictionary using DFS algorithm. Where n is the size of the
+	 * dictionary, there would be n^n nodes. Pruning is vital.
+	 */
 	public void run() {
-		/*
-		 * This iterates through the words we want to find anagrams for.
-		 */
+		// This iterates through the words we want to find anagrams for.
 		for (int i = 0; i < words.size(); i++) {
+			long startTime = System.nanoTime();
+			// long start = System.nanoTime();
 
 			for (char c : words.get(i).getWord()) {
 				currentWord.add(c);
 			}
 
-			/*
-			 * This for loop finds words in the dictionary that could be built using the
-			 * characters in the current word.
-			 */
+			// This for loop finds words in the dictionary that could be built using the
+			// characters in the current word.
 			reduceDictionary(wholeDictionary);
 
 			dicSize = smallDictionary.size();
 
-			long startTime = System.nanoTime();
 			// Iterates through all words in small dictionary for testing.
 			for (int j = 0; j < dicSize; j++) {
-				// long start = System.nanoTime();
 
 				Words dicWord = smallDictionary.get(j);
 				int dicWordLength = dicWord.length();
@@ -116,13 +116,9 @@ public class Anagram {
 				currentWordList.add(currentWord);
 				currentWord = currentWordTemp;
 
-				// long end = System.nanoTime();
-				// testTimeFive += end - start;
-				/*
-				 * The following code creates a new dictionary that will be smaller since we now
-				 * have fewer available characters, it would be useless to keep all words in the
-				 * current dictionary.
-				 */
+				// The following code creates a new dictionary that will be smaller since we now
+				// have fewer available characters, it would be useless to keep all words in the
+				// current dictionary.
 				dicArray.add(new ArrayList<Words>(smallDictionary));
 				reduceDictionary(new ArrayList<Words>(smallDictionary.subList(j, dicSize)));
 				dicSize = smallDictionary.size();
@@ -136,26 +132,12 @@ public class Anagram {
 
 				if (j == dicSize - 1) {
 
-					/*
-					 * If condition is true, then we have used all characters in word and have found
-					 * an anagram.
-					 */
+					// If condition is true, then we have used all characters in word and have found
+					// an anagram.
 					if (currentWord.size() == 0) {
 						compareAnagrams();
 					}
 
-					/*
-					 * Once we reach the end of the dictionary, we are always guaranteed to always
-					 * have to move back to an initial state at least once.
-					 * 
-					 * We always initialize j to the previous j before going back to the initial
-					 * state, before the j value we want gets deleted, because if we don't and
-					 * initialize it after, we will find that same word again, and have an infinite
-					 * loop.
-					 *
-					 * If we moved back and j is still the same, we keep moving back until j is
-					 * different otherwise the for loop will end.
-					 */
 					while (indexPoints.size() > 0 && j == dicSize - 1) {
 						j = indexPoints.get(indexPoints.size() - 1);
 						moveBack();
@@ -182,6 +164,8 @@ public class Anagram {
 			currentAvailable.clear();
 			currentAvailableList.clear();
 
+			// long end = System.nanoTime();
+			// testTimeFive += end - start;
 			// Time testing.
 			long endTime = System.nanoTime();
 			System.out.println("Total Time: " + (endTime - startTime) / 1000000);
@@ -200,15 +184,20 @@ public class Anagram {
 
 	}
 
+	/**
+	 * This function creates a new smallDictionary. Words from input 'dictionary'
+	 * that can be built with the characters available from the current word will be
+	 * added.
+	 * 
+	 * @param dictionary Word pool to check.
+	 */
 	public void reduceDictionary(ArrayList<Words> dictionary) {
 		smallDictionary.clear();
 		long startTime = System.nanoTime();
 		for (int i = 0; i < dictionary.size(); i++) {
 			Words wordCurrent = dictionary.get(i);
-			ArrayList<Character> currentWordTemp;
 			if (wordCurrent.length() <= currentWord.size() && (testCurrentAnagram.size() + 1 < bestSize
 					|| (testCurrentAnagram.size() + 1 == bestSize && currentWord.size() == wordCurrent.length()))) {
-				currentWordTemp = new ArrayList<Character>(currentWord);
 				int j = 0;
 				int k = 0;
 				while (j < wordCurrent.length() && k < currentWord.size()) {
@@ -231,7 +220,7 @@ public class Anagram {
 	}
 
 	/**
-	 * This function takes us back to an earlier state
+	 * This function takes us back to an earlier state in DFS.
 	 */
 	public void moveBack() {
 		long startTime = System.nanoTime();
