@@ -125,7 +125,6 @@ public class Anagram {
 				dicArray.add(new ArrayList<Words>(smallDictionary));
 				reduceDictionary(new ArrayList<Words>(smallDictionary.subList(j, dicSize)));
 				dicSize = smallDictionary.size();
-				// System.out.println(dicSize);
 
 				if (currentWord.size() == 0) {
 					j = smallDictionary.size() - 1;
@@ -194,9 +193,13 @@ public class Anagram {
 	 * @param dictionary Word pool to check.
 	 */
 	public void reduceDictionary(ArrayList<Words> dictionary) {
+		ArrayList<Words> smallTemp = new ArrayList<Words>();
 		smallDictionary.clear();
 		// long startTime = System.nanoTime();
-		for (int i = 0; i < dictionary.size(); i++) {
+
+		// More efficient starting backwards with smaller words so when we reach a word
+		// that is larger than the pool of available characters, we break the looop.
+		for (int i = dictionary.size() - 1; i >= 0; i--) {
 			Words wordCurrent = dictionary.get(i);
 			if (wordCurrent.length() <= currentWord.size()) {
 				if (testCurrentAnagram.size() + 1 < bestSize
@@ -214,12 +217,18 @@ public class Anagram {
 						}
 					}
 					if (j == wordCurrent.length()) {
-						smallDictionary.add(wordCurrent);
+						smallTemp.add(wordCurrent);
 					}
 				}
-			}else{
+			} else {
 				break;
 			}
+		}
+
+		// We sort from largest to smallest again (just flip it) as a result of going
+		// backwards in the loop above.
+		for (int i = smallTemp.size() - 1; i >= 0; i--) {
+			smallDictionary.add(smallTemp.get(i));
 		}
 		// long endTime = System.nanoTime();
 		// testTimeFour += endTime - startTime;
