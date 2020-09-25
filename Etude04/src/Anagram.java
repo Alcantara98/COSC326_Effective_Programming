@@ -43,8 +43,7 @@ public class Anagram {
 	private ArrayList<Character> currentWord;
 	private ArrayList<ArrayList<Character>> currentWordList;
 
-	private ArrayList<ArrayList<Character>> currentAvailable;
-	private ArrayList<ArrayList<ArrayList<Character>>> currentAvailableList;
+	private int currentWordLength;
 
 	// This will contain dictionaries for each layer.
 	private ArrayList<ArrayList<Words>> dicArray;
@@ -53,11 +52,12 @@ public class Anagram {
 
 	// private long testTimeOne = 0;
 	// private long testTimeTwo = 0;
-	private long testTimeThree = 0;
-	private long testTimeFour = 0;
-	private long testTimeFive = 0;
+	// private long testTimeThree = 0;
+	// private long testTimeFour = 0;
+	// private long testTimeFive = 0;
 
 	public Anagram(ArrayList<Words> wholeDictionaryInput, ArrayList<Words> wordsInput) {
+		currentWordLength = 0;
 		wholeDictionary = new ArrayList<Words>(wholeDictionaryInput);
 		words = new ArrayList<Words>(wordsInput);
 		smallDictionary = new ArrayList<Words>();
@@ -67,8 +67,6 @@ public class Anagram {
 		currentWordList = new ArrayList<ArrayList<Character>>();
 		testCurrentAnagram = new ArrayList<String>();
 		dicArray = new ArrayList<ArrayList<Words>>();
-		currentAvailable = new ArrayList<ArrayList<Character>>();
-		currentAvailableList = new ArrayList<ArrayList<ArrayList<Character>>>();
 	}
 
 	/**
@@ -88,14 +86,19 @@ public class Anagram {
 			// This for loop finds words in the dictionary that could be built using the
 			// characters in the current word.
 			reduceDictionary(wholeDictionary);
-
+			currentWordLength = currentWord.size();
 			dicSize = smallDictionary.size();
+			// System.out.println(dicSize);
 
 			// Iterates through all words in small dictionary for testing.
 			for (int j = 0; j < dicSize; j++) {
-
 				Words dicWord = smallDictionary.get(j);
 				int dicWordLength = dicWord.length();
+				if (testCurrentAnagram.size() == 0 && currentAnagram.size() != 0
+						&& currentWordLength / dicWordLength > currentAnagram.size()) {
+					break;
+				}
+
 				int w = 0;
 				int z = 0;
 				ArrayList<Character> currentWordTemp = new ArrayList<Character>(currentWord);
@@ -122,6 +125,7 @@ public class Anagram {
 				dicArray.add(new ArrayList<Words>(smallDictionary));
 				reduceDictionary(new ArrayList<Words>(smallDictionary.subList(j, dicSize)));
 				dicSize = smallDictionary.size();
+				// System.out.println(dicSize);
 
 				if (currentWord.size() == 0) {
 					j = smallDictionary.size() - 1;
@@ -161,25 +165,23 @@ public class Anagram {
 			bestSize = Integer.MAX_VALUE;
 			dicArray.clear();
 			currentWordList.clear();
-			currentAvailable.clear();
-			currentAvailableList.clear();
 
 			// long end = System.nanoTime();
 			// testTimeFive += end - start;
 			// Time testing.
 			long endTime = System.nanoTime();
 			System.out.println("Total Time: " + (endTime - startTime) / 1000000);
-			// System.out.println("Anagram Sorting Alg: " + testTimeOne / 1000000);
-			// System.out.println("Compare Anagram: " + testTimeTwo / 1000000);
-			System.out.println("Move Back: " + testTimeThree / 1000000);
-			System.out.println("Reduce Dictionary: " + testTimeFour / 1000000);
-			System.out.println("While: " + testTimeFive / 1000000);
-			System.out.println("");
-			// testTimeOne = 0;
-			// testTimeTwo = 0;
-			testTimeThree = 0;
-			testTimeFour = 0;
-			testTimeFive = 0;
+			// // System.out.println("Anagram Sorting Alg: " + testTimeOne / 1000000);
+			// // System.out.println("Compare Anagram: " + testTimeTwo / 1000000);
+			// System.out.println("Move Back: " + testTimeThree / 1000000);
+			// System.out.println("Reduce Dictionary: " + testTimeFour / 1000000);
+			// System.out.println("While: " + testTimeFive / 1000000);
+			// System.out.println("");
+			// // testTimeOne = 0;
+			// // testTimeTwo = 0;
+			// testTimeThree = 0;
+			// testTimeFour = 0;
+			// testTimeFive = 0;
 		}
 
 	}
@@ -193,37 +195,41 @@ public class Anagram {
 	 */
 	public void reduceDictionary(ArrayList<Words> dictionary) {
 		smallDictionary.clear();
-		long startTime = System.nanoTime();
+		// long startTime = System.nanoTime();
 		for (int i = 0; i < dictionary.size(); i++) {
 			Words wordCurrent = dictionary.get(i);
-			if (wordCurrent.length() <= currentWord.size() && (testCurrentAnagram.size() + 1 < bestSize
-					|| (testCurrentAnagram.size() + 1 == bestSize && currentWord.size() == wordCurrent.length()))) {
-				int j = 0;
-				int k = 0;
-				while (j < wordCurrent.length() && k < currentWord.size()) {
-					if (wordCurrent.charAt(j) == currentWord.get(k)) {
-						j++;
-						k++;
-					} else if (wordCurrent.charAt(j) < currentWord.get(k)) {
-						break;
-					} else {
-						k++;
+			if (wordCurrent.length() <= currentWord.size()) {
+				if (testCurrentAnagram.size() + 1 < bestSize
+						|| (testCurrentAnagram.size() + 1 == bestSize && currentWord.size() == wordCurrent.length())) {
+					int j = 0;
+					int k = 0;
+					while (j < wordCurrent.length() && k < currentWord.size()) {
+						if (wordCurrent.charAt(j) == currentWord.get(k)) {
+							j++;
+							k++;
+						} else if (wordCurrent.charAt(j) < currentWord.get(k)) {
+							break;
+						} else {
+							k++;
+						}
+					}
+					if (j == wordCurrent.length()) {
+						smallDictionary.add(wordCurrent);
 					}
 				}
-				if (j == wordCurrent.length()) {
-					smallDictionary.add(wordCurrent);
-				}
+			}else{
+				break;
 			}
 		}
-		long endTime = System.nanoTime();
-		testTimeFour += endTime - startTime;
+		// long endTime = System.nanoTime();
+		// testTimeFour += endTime - startTime;
 	}
 
 	/**
 	 * This function takes us back to an earlier state in DFS.
 	 */
 	public void moveBack() {
-		long startTime = System.nanoTime();
+		// long startTime = System.nanoTime();
 		indexPoints.remove(indexPoints.size() - 1);
 
 		testCurrentAnagram.remove(testCurrentAnagram.size() - 1);
@@ -234,8 +240,9 @@ public class Anagram {
 
 		currentWord = currentWordList.get(currentWordList.size() - 1);
 		currentWordList.remove(currentWordList.size() - 1);
-		long endTime = System.nanoTime();
-		testTimeThree += endTime - startTime;
+
+		// long endTime = System.nanoTime();
+		// testTimeThree += endTime - startTime;
 	}
 
 	/**
@@ -251,11 +258,7 @@ public class Anagram {
 		int currentAnagramSize = anagram.size();
 		for (int k = currentAnagramSize - 2; k >= 0; k--) {
 			for (int x = k; x < currentAnagramSize - 1; x++) {
-				if (anagram.get(x).length() < anagram.get(x + 1).length()) {
-					String duplicate = anagram.get(x);
-					anagram.set(x, anagram.get(x + 1));
-					anagram.set(x + 1, duplicate);
-				} else if (anagram.get(x).length() == anagram.get(x + 1).length()) {
+				if (anagram.get(x).length() == anagram.get(x + 1).length()) {
 					boolean found = false;
 					for (int y = 0; y < anagram.get(x).length(); y++) {
 
@@ -298,19 +301,17 @@ public class Anagram {
 	 */
 	public void compareAnagrams() {
 		// long startTimeTwo = System.nanoTime();
-		int currentAnagramSize = currentAnagram.size();
-		int testCurrentAnagramSize = testCurrentAnagram.size();
 
 		/*
 		 * If currentAnagram is not initialized or contained more words then
 		 * testCurrentAnagram, currentAnagram gets replaced since less words is better.
 		 */
-		if (currentAnagramSize == 0 || currentAnagramSize > testCurrentAnagramSize) {
+		if (currentAnagram.size() == 0 || currentAnagram.size() > testCurrentAnagram.size()) {
 
 			currentAnagram = sortAnagram(new ArrayList<String>(testCurrentAnagram));
 			bestSize = currentAnagram.size();
 
-		} else if (currentAnagramSize == testCurrentAnagramSize) {
+		} else if (currentAnagram.size() == testCurrentAnagram.size()) {
 
 			/*
 			 * We create a duplicate of testCurrentAnagram which we sort from largest to
@@ -327,7 +328,7 @@ public class Anagram {
 			 * We compare from largest word to smallest, if at any instance the word from
 			 * testCurrentAnagram is larger, it becomes currentAnagram.
 			 */
-			for (int k = 0; k < currentAnagramSize - 1; k++) {
+			for (int k = 0; k < currentAnagram.size() - 1; k++) {
 				if (testCurrentAnagramOne.get(k).length() < currentAnagram.get(k).length()) {
 					done = true;
 					break;
@@ -347,8 +348,7 @@ public class Anagram {
 			 * currentAnagram, then testCurrentAnagram becomes currentAnagram.
 			 */
 			if (!done) {
-				boolean found = false;
-				for (int j = 0; j < currentAnagramSize && !found; j++) {
+				for (int j = 0; j < currentAnagram.size(); j++) {
 					for (int k = 0; k < currentAnagram.get(j).length(); k++) {
 
 						char currentChar = currentAnagram.get(j).charAt(k);
@@ -362,10 +362,10 @@ public class Anagram {
 						}
 						if (currentChar > testChar) {
 							currentAnagram = new ArrayList<String>(testCurrentAnagramOne);
-							found = true;
+							j = currentAnagram.size();
 							break;
 						} else if (currentChar < testChar) {
-							found = true;
+							j = currentAnagram.size();
 							break;
 						}
 					}

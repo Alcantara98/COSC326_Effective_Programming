@@ -1,6 +1,6 @@
 appleapple
 hello
-you suck
+yousuck
 pirates
 saturn
 victoria
@@ -10,14 +10,16 @@ indonesia
 lovecoding
 whereareyou
 australia
-ghengis Khan
+ghengisKhan
 banobatica
 rebellion
 zebra
 godzilla
-dragon reborn
+dragonreborn
 Rhinocerotidae
 
+dragon
+reborn
 aardvark
 aardwolf
 aaron
