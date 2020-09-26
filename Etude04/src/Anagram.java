@@ -36,25 +36,42 @@ public class Anagram {
 	// Stores the current best Anagram.
 	private ArrayList<String> currentAnagram;
 
-	// This is where we place words as we create an new Anagram to compare against
-	// current best.
+	// This is where we place words as we create a new Anagram to compare against
+	// the current best anagram.
 	private ArrayList<String> testCurrentAnagram;
 
+	// This stores the current characters available.
 	private ArrayList<Character> currentWord;
+
+	// As we do DFS, we store the currentWord for each node we have visited in
+	// current path.
 	private ArrayList<ArrayList<Character>> currentWordList;
 
+	// Length of the current word we are looking anagrams for.
 	private int currentWordLength;
 
 	// This will contain dictionaries for each layer.
 	private ArrayList<ArrayList<Words>> dicArray;
+
+	// Current Dictionary Size.
 	private int dicSize;
+
+	// Size of best current anagram, the lower the better, hence set to max int
+	// value (worst) initially.
 	private int bestSize = Integer.MAX_VALUE;
 
-	// private long testTimeOne = 0;
-	// private long testTimeTwo = 0;
-	// private long testTimeThree = 0;
-	// private long testTimeFour = 0;
-	// private long testTimeFive = 0;
+	private final boolean TIMECHECK = true;
+
+	private long startTimeZero;
+	private long startTimeOne;
+	private long startTimeTwo;
+	private long startTimeThree;
+	private long startTimeFour;
+
+	private long testTimeOne = 0;
+	private long testTimeTwo = 0;
+	private long testTimeThree = 0;
+	private long testTimeFour = 0;
 
 	public Anagram(ArrayList<Words> wholeDictionaryInput, ArrayList<Words> wordsInput) {
 		currentWordLength = 0;
@@ -74,11 +91,13 @@ public class Anagram {
 	 * dictionary, there would be n^n nodes. Pruning is vital.
 	 */
 	public void run() {
+		if (TIMECHECK)
+			startTimeZero = System.nanoTime();
+
 		// This iterates through the words we want to find anagrams for.
 		for (int i = 0; i < words.size(); i++) {
-			long startTime = System.nanoTime();
-			// long start = System.nanoTime();
-
+			// Retrieves characters from current word into arraylist of chars for easier
+			// manipulation.
 			for (char c : words.get(i).getWord()) {
 				currentWord.add(c);
 			}
@@ -88,7 +107,9 @@ public class Anagram {
 			reduceDictionary(wholeDictionary);
 			currentWordLength = currentWord.size();
 			dicSize = smallDictionary.size();
-			// System.out.println(dicSize);
+
+			if (TIMECHECK)
+				System.out.println(dicSize);
 
 			// Iterates through all words in small dictionary for testing.
 			for (int j = 0; j < dicSize; j++) {
@@ -99,6 +120,12 @@ public class Anagram {
 					break;
 				}
 
+				// We check and remove which characters are used in current word. It is already
+				// guarnteed to be formed with aailable characters since we check when calling
+				// reduceDictionary, but we don't know which characters are used. Saving which
+				// characters are used takes longer than just checking it again here.
+				// Removing reduceDictionary requires that w = dicWordLength, if not, the word
+				// cannot be formed with remaining characters.
 				int w = 0;
 				int z = 0;
 				ArrayList<Character> currentWordTemp = new ArrayList<Character>(currentWord);
@@ -112,35 +139,41 @@ public class Anagram {
 						z++;
 					}
 				}
-				// if (w == dicWordLength) {
+
+				// if(w == dicWordLength){
+
+				// Add current node information to lists as it is a node in current path in DFS.
 				indexPoints.add(j);
+				currentWordList.add(currentWord);
+				dicArray.add(new ArrayList<Words>(smallDictionary));
+
+				// Add to test Anagram.
 				testCurrentAnagram.add(dicWord.getOrigWord());
 
-				currentWordList.add(currentWord);
+				// Set currentWord to remaining chracters.
 				currentWord = currentWordTemp;
 
-				// The following code creates a new dictionary that will be smaller since we now
-				// have fewer available characters, it would be useless to keep all words in the
-				// current dictionary.
-				dicArray.add(new ArrayList<Words>(smallDictionary));
+				// Reduce smallDictionary size to words that can be formed with remaining
+				// characters.
 				reduceDictionary(new ArrayList<Words>(smallDictionary.subList(j, dicSize)));
 				dicSize = smallDictionary.size();
 
+				// If condition is true, then we have used all characters in word and have found
+				// an anagram.
 				if (currentWord.size() == 0) {
 					j = smallDictionary.size() - 1;
 				} else {
 					j = -1;
 				}
+
 				// }
 
 				if (j == dicSize - 1) {
-
-					// If condition is true, then we have used all characters in word and have found
-					// an anagram.
 					if (currentWord.size() == 0) {
 						compareAnagrams();
 					}
 
+					// Moves us back in layers in tree once certain conditions are met.
 					while (indexPoints.size() > 0 && j == dicSize - 1) {
 						j = indexPoints.get(indexPoints.size() - 1);
 						moveBack();
@@ -165,22 +198,20 @@ public class Anagram {
 			dicArray.clear();
 			currentWordList.clear();
 
-			// long end = System.nanoTime();
-			// testTimeFive += end - start;
 			// Time testing.
-			long endTime = System.nanoTime();
-			System.out.println("Total Time: " + (endTime - startTime) / 1000000);
-			// // System.out.println("Anagram Sorting Alg: " + testTimeOne / 1000000);
-			// // System.out.println("Compare Anagram: " + testTimeTwo / 1000000);
-			// System.out.println("Move Back: " + testTimeThree / 1000000);
-			// System.out.println("Reduce Dictionary: " + testTimeFour / 1000000);
-			// System.out.println("While: " + testTimeFive / 1000000);
-			// System.out.println("");
-			// // testTimeOne = 0;
-			// // testTimeTwo = 0;
-			// testTimeThree = 0;
-			// testTimeFour = 0;
-			// testTimeFive = 0;
+			if (TIMECHECK) {
+				long endTime = System.nanoTime();
+				System.out.println("Total Time: " + (endTime - startTimeZero) / 1000000);
+				System.out.println("Reduce Dictionary: " + testTimeOne / 1000000);
+				System.out.println("Move Back: " + testTimeTwo / 1000000);
+				System.out.println("Anagram Sorting Alg: " + testTimeThree / 1000000);
+				System.out.println("Compare Anagram: " + testTimeFour / 1000000);
+				System.out.println("");
+				testTimeOne = 0;
+				testTimeTwo = 0;
+				testTimeThree = 0;
+				testTimeFour = 0;
+			}
 		}
 
 	}
@@ -193,12 +224,15 @@ public class Anagram {
 	 * @param dictionary Word pool to check.
 	 */
 	public void reduceDictionary(ArrayList<Words> dictionary) {
+		if (TIMECHECK)
+			startTimeOne = System.nanoTime();
+
 		ArrayList<Words> smallTemp = new ArrayList<Words>();
 		smallDictionary.clear();
-		// long startTime = System.nanoTime();
 
 		// More efficient starting backwards with smaller words so when we reach a word
-		// that is larger than the pool of available characters, we break the looop.
+		// that is larger than the pool of available characters, we break the looop
+		// since the words following will also be larger.
 		for (int i = dictionary.size() - 1; i >= 0; i--) {
 			Words wordCurrent = dictionary.get(i);
 			if (wordCurrent.length() <= currentWord.size()) {
@@ -230,15 +264,19 @@ public class Anagram {
 		for (int i = smallTemp.size() - 1; i >= 0; i--) {
 			smallDictionary.add(smallTemp.get(i));
 		}
-		// long endTime = System.nanoTime();
-		// testTimeFour += endTime - startTime;
+		if (TIMECHECK) {
+			long endTime = System.nanoTime();
+			testTimeOne += endTime - startTimeOne;
+		}
 	}
 
 	/**
 	 * This function takes us back to an earlier state in DFS.
 	 */
 	public void moveBack() {
-		// long startTime = System.nanoTime();
+		if (TIMECHECK)
+			startTimeTwo = System.nanoTime();
+
 		indexPoints.remove(indexPoints.size() - 1);
 
 		testCurrentAnagram.remove(testCurrentAnagram.size() - 1);
@@ -250,8 +288,10 @@ public class Anagram {
 		currentWord = currentWordList.get(currentWordList.size() - 1);
 		currentWordList.remove(currentWordList.size() - 1);
 
-		// long endTime = System.nanoTime();
-		// testTimeThree += endTime - startTime;
+		if (TIMECHECK) {
+			long endTime = System.nanoTime();
+			testTimeTwo += endTime - startTimeTwo;
+		}
 	}
 
 	/**
@@ -263,7 +303,9 @@ public class Anagram {
 	 * @return sorted anagram
 	 */
 	public ArrayList<String> sortAnagram(ArrayList<String> anagram) {
-		// long startTimeOne = System.nanoTime();
+		if (TIMECHECK)
+			startTimeThree = System.nanoTime();
+
 		int currentAnagramSize = anagram.size();
 		for (int k = currentAnagramSize - 2; k >= 0; k--) {
 			for (int x = k; x < currentAnagramSize - 1; x++) {
@@ -298,9 +340,14 @@ public class Anagram {
 				}
 			}
 		}
-		// long endTimeOne = System.nanoTime();
-		// testTimeOne += endTimeOne - startTimeOne;
+
+		if (TIMECHECK) {
+			long endTimeOne = System.nanoTime();
+			testTimeThree += endTimeOne - startTimeThree;
+		}
+
 		return anagram;
+
 	}
 
 	/**
@@ -309,12 +356,11 @@ public class Anagram {
 	 * replaced.
 	 */
 	public void compareAnagrams() {
-		// long startTimeTwo = System.nanoTime();
+		if (TIMECHECK)
+			startTimeFour = System.nanoTime();
 
-		/*
-		 * If currentAnagram is not initialized or contained more words then
-		 * testCurrentAnagram, currentAnagram gets replaced since less words is better.
-		 */
+		// If currentAnagram is not initialized or contained more words then
+		// testCurrentAnagram, currentAnagram gets replaced since less words is better.
 		if (currentAnagram.size() == 0 || currentAnagram.size() > testCurrentAnagram.size()) {
 
 			currentAnagram = sortAnagram(new ArrayList<String>(testCurrentAnagram));
@@ -322,21 +368,16 @@ public class Anagram {
 
 		} else if (currentAnagram.size() == testCurrentAnagram.size()) {
 
-			/*
-			 * We create a duplicate of testCurrentAnagram which we sort from largest to
-			 * smallest which we use to compare with currentAnagram. We can't sort
-			 * testCurrentAnagram since if we do, the corresponding information in the other
-			 * array lists will no longer be valid, so we only sort it once it becomes the
-			 * currentAnagram.
-			 */
+			// We create a duplicate of testCurrentAnagram which we sort from largest to
+			// smallest to compare with currentAnagram. We can't sort testCurrentAnagram
+			// since if we do, the corresponding information in the other array lists will
+			// no longer be valid, so we only sort it if it becomes the best anagram.
 			ArrayList<String> testCurrentAnagramOne = sortAnagram(new ArrayList<String>(testCurrentAnagram));
 
 			boolean done = false;
 
-			/*
-			 * We compare from largest word to smallest, if at any instance the word from
-			 * testCurrentAnagram is larger, it becomes currentAnagram.
-			 */
+			// We compare from largest word to smallest, if at any instance the word from
+			// testCurrentAnagram is larger, it becomes currentAnagram.
 			for (int k = 0; k < currentAnagram.size() - 1; k++) {
 				if (testCurrentAnagramOne.get(k).length() < currentAnagram.get(k).length()) {
 					done = true;
@@ -349,13 +390,11 @@ public class Anagram {
 				}
 			}
 
-			/*
-			 * If all words at corresponding indexes have equal length between the two, we
-			 * iterate through them all again starting from the largest, and if at any
-			 * instance, the first character in a word in testCurrentAnagram comes first in
-			 * the alphabet than the corresponding first character in the word from
-			 * currentAnagram, then testCurrentAnagram becomes currentAnagram.
-			 */
+			// If all words at corresponding indexes have equal length between the two, we
+			// iterate through them all again starting from the largest, and if at any
+			// instance, the first character in a word in testCurrentAnagram comes first in
+			// the alphabet than the corresponding first character in the word from
+			// currentAnagram, then testCurrentAnagram becomes currentAnagram.
 			if (!done) {
 				for (int j = 0; j < currentAnagram.size(); j++) {
 					for (int k = 0; k < currentAnagram.get(j).length(); k++) {
@@ -381,7 +420,9 @@ public class Anagram {
 				}
 			}
 		}
-		// long endTimeTwo = System.nanoTime();
-		// testTimeTwo += endTimeTwo - startTimeTwo;
+		if (TIMECHECK) {
+			long endTimeTwo = System.nanoTime();
+			testTimeFour += endTimeTwo - startTimeFour;
+		}
 	}
 }
