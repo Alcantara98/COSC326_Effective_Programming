@@ -1,11 +1,9 @@
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Collections;
 
 public class Main {
+
     /**
      * Main function of application.
      * 
@@ -14,14 +12,14 @@ public class Main {
      */
     public static void main(String[] args) throws IOException {
         // Contains all the words from the input dictionary.
-        ArrayList<Words> wholeDictionary = new ArrayList<Words>();
-        ArrayList<String> wholeDictionaryString = new ArrayList<String>();
+        ArrayList<String> inputDictionary = new ArrayList<String>();
+
         // Contains all words from input.
-        ArrayList<Words> words = new ArrayList<Words>();
+        ArrayList<String> words = new ArrayList<String>();
 
         boolean flag = false;
-        // int inputType = 0;
 
+        // Takes input from stdin.
         Scanner sc = new Scanner(System.in);
         while (sc.hasNext()) {
             String inputLine = sc.nextLine();
@@ -38,28 +36,15 @@ public class Main {
                 }
 
                 if (!flag) {
-                    Words newWord = new Words(inputLine);
-                    words.add(newWord);
+                    words.add(inputLine);
                 } else {
-                    wholeDictionaryString.add(inputLine);
+                    inputDictionary.add(inputLine);
                 }
             }
         }
-        String[] dictionary = new String[wholeDictionaryString.size()];
+        sc.close();
 
-        for(int i = 0; i < wholeDictionaryString.size(); i++){
-            dictionary[i] = wholeDictionaryString.get(i);
-        }
-
-        Arrays.sort(dictionary, Comparator.comparingInt(String::length));
-        Collections.reverse(Arrays.asList(dictionary));
-
-        for(String s: dictionary){
-            wholeDictionary.add(new Words(s));
-            //System.out.println(s);
-        }
-
-        Anagram myAnagram = new Anagram(wholeDictionary, words);
+        Anagram myAnagram = new Anagram(inputDictionary, words);
         myAnagram.run();
     }
 }
