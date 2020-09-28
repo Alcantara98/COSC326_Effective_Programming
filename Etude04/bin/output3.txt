@@ -1,0 +1,41 @@
+one: eon
+Total Time: 11
+Move Back: 0
+Reduce Dictionary: 2
+While: 0
+
+onetwo: enow to
+Total Time: 8
+Move Back: 0
+Reduce Dictionary: 10
+While: 0
+
+onetwothree: hooter tween
+Total Time: 14
+Move Back: 0
+Reduce Dictionary: 7
+While: 0
+
+onetwothreefour: enfree outrow hot
+Total Time: 110
+Move Back: 6
+Reduce Dictionary: 26
+While: 0
+
+onetwothreefourfive: effete heroin outrow v
+Total Time: 6556
+Move Back: 436
+Reduce Dictionary: 2380
+While: 0
+
+onetwothreefourfivesix: effete heriot vinous wrox
+Total Time: 53362
+Move Back: 3319
+Reduce Dictionary: 22431
+While: 0
+
+onetwothreefourfivesixseven: effete enrive exhort vinous sow
+Total Time: 11585709
+Move Back: 826973
+Reduce Dictionary: 4364364
+While: 0

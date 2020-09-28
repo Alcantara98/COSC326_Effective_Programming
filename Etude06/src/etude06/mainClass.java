@@ -1,5 +1,3 @@
-package etude06;
-
 import javax.swing.JFrame;;
 
 /**
