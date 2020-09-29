@@ -159,7 +159,7 @@ public class Anagram {
 					// characters.
 					reduceDictionary(new ArrayList<String>(smallDictionary.subList(j, dicSize)));
 					dicSize = smallDictionary.size();
-					System.out.println(dicSize);
+					//System.out.println(dicSize);
 					// If condition is true, then we have used all characters in word and have found
 					// an anagram.
 					if (currentWord.size() == 0) {
