@@ -1,411 +1,522 @@
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
+/**
+ * An Application that finds the best Anagram.
+ * 
+ * Conditions for best Anagram:
+ * 
+ * • Anagrams using fewer words are better than ones using more words.
+ * 
+ * • If two anagrams use the same number of words, they should first be compared
+ * by word length — if the longest words differ in length, then the one with a
+ * longer first word is better. If the longest words are equal in length but the
+ * second longest words differ in length then the one with a longer second
+ * longest word is better. And so on.
+ * 
+ * • If two anagrams have the same number of words, and corresponding words have
+ * the same length, then the earlier one in alphabetical order is better
+ * 
+ * @author Elbert Alcantara
+ * @author Minh Tran
+ */
 public class Anagram {
-	// Contains all the words from the input dictionary.
-	private static ArrayList<String> wholeDictionary = new ArrayList<String>();
 
-	// Will be updated for the current word, and will contain all words from
-	// wholeDictionary that can be formed from the current word.
-	private static ArrayList<String> smallDictionary = new ArrayList<String>();
-	private static ArrayList<String> words = new ArrayList<String>();
+	// Input Dictionary.
+	private ArrayList<char[]> rawDictionary;
 
-	// Keeps track at which index in the dictionary we got the word
-	private static ArrayList<Integer> indexPoints = new ArrayList<Integer>();
-	// Keeps track of how many characters it has used at that point
-	private static ArrayList<Integer> numberTakenList = new ArrayList<Integer>();
-	// Keeping track which characters have been used
-	private static ArrayList<int[]> takenChars = new ArrayList<int[]>();
-	// Stores the current anagram
-	private static ArrayList<String> currentAnagram = new ArrayList<String>();
-	private static ArrayList<String> testCurrentAnagram = new ArrayList<String>();
+	// HashTable containing original unsorted words.
+	private Hashtable<char[], char[]> hashDictionary;
 
-	private static boolean flag = false;
-	private static final boolean DEBUGGING = true;
-	private static int inputType = 1;
-	private static String currentWord;
-	private static int wordLength;
-	// If the index is 1, then that char in word at that index has been used
-	private static int[] currentTaken;
-	// Number of characters taken
-	private static int numberTaken;
+	// Contains all words from input.
+	private ArrayList<char[]> words;
 
-	private static int[] testCurrentTaken;
-	private static int testNumberTaken;
+	// Stores the current best Anagram.
+	private ArrayList<char[]> currentAnagram;
 
-	public static void main(String[] args) throws IOException {
-		long startTime = System.nanoTime();
-		if (inputType == 1) {
-			BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("input2.txt")));
-			try {
-				String inputLine = "";
-				while ((inputLine = br.readLine()) != null) {
-					if (inputLine.isEmpty()) {
-						flag = true;
-					} else {
-						inputLine = inputLine.toLowerCase();
+	// This is where we place words as we create a new Anagram to compare against
+	// the current best anagram.
+	private ArrayList<char[]> testCurrentAnagram;
 
-						if (!flag) {
-							words.add(inputLine);
-						} else {
-							wholeDictionary.add(inputLine);
-						}
-					}
+	// This stores the current characters available.
+	// private ArrayList<Character> currentWord;
 
-				}
-			} finally {
-				br.close();
-			}
-		} else {
-			Scanner sc = new Scanner(System.in);
-			while (sc.hasNext()) {
-				String inputLine = sc.nextLine();
-				if (inputLine.isEmpty()) {
-					flag = true;
-				} else {
-					inputLine = inputLine.toLowerCase();
+	// As we do DFS, we store the currentWord for each node we have visited in
+	// current path.
 
-					if (!flag) {
-						words.add(inputLine);
-					} else {
-						wholeDictionary.add(inputLine);
-					}
-				}
-			}
-		}
+	private boolean breakRecursion;
+	private int currentWordLength;
 
+	// Current Dictionary Size.
+	// private int dicSize;
+
+	// Size of best current anagram, the lower the better, hence set to max int
+	// value (worst) initially.
+	private int bestSize = Integer.MAX_VALUE;
+	ArrayList<char[]> smallDictionary;
+
+	/**
+	 * To use this application a dictionary pool, and a list of words ()
+	 * 
+	 * @param dictionaryIn Dictionary which will be the raw anagram pool.
+	 * @param wordsInput   Will contain the words we will look anagrams for.
+	 */
+	public Anagram(ArrayList<char[]> dictionaryIn, ArrayList<char[]> wordsInput) {
+		rawDictionary = new ArrayList<char[]>(dictionaryIn);
+		hashDictionary = new Hashtable<char[], char[]>();
+
+		words = new ArrayList<char[]>(wordsInput);
+
+		currentAnagram = new ArrayList<char[]>();
+		testCurrentAnagram = new ArrayList<char[]>();
+		breakRecursion = false;
+		smallDictionary = new ArrayList<char[]>();
+	}
+
+	/**
+	 * We go through the dictionary using DFS algorithm recursively using the
+	 * recursive function. Where n is the size of the dictionary, there would be n^d
+	 * nodes, where d is the depth which would depend on the current word. Pruning
+	 * is vital.
+	 */
+	public void run() {
+
+		// This iterates through the words we want to find anagrams for.
 		for (int i = 0; i < words.size(); i++) {
-			currentWord = "";
-			for (int j = 0; j < words.get(i).length(); j++) {
-				char c = words.get(i).charAt(j);
-				if (c >= 'a' && c <= 'z') {
-					currentWord = currentWord + c;
-				}
+			long startTimeZero = System.nanoTime();
+
+			currentWordLength = words.get(i).length;
+
+			// Retrieves characters from current word into arraylist of chars for easier
+			// manipulation.
+			char[] newWord = words.get(i).clone();
+			Arrays.sort(newWord);
+
+			// This for loop finds words in the dictionary that could be built using the
+			// characters in the current word.
+			ArrayList<char[]> smallDictionary = new ArrayList<char[]>(initialSorting(initialReduce(newWord)));
+
+			// System.out.println(smallDictionary.size());
+			recursive(smallDictionary, newWord);
+
+			// Prints out result once we go through the whole dictionary.
+			String anagram = "";
+			for (char[] c : currentAnagram) {
+				anagram += " " + String.valueOf(c);
 			}
+			System.out.println(String.valueOf(words.get(i)) + ":" + anagram);
 
-			wordLength = currentWord.length();
-			currentTaken = new int[wordLength];
-			numberTaken = 0;
-
-			for (int j = 0; j < wordLength; j++) {
-				currentTaken[j] = 0;
-			}
-
-			numberTakenList.add(numberTaken);
-			takenChars.add(currentTaken.clone());
-			indexPoints.add(0);
-			// duplicateCount.add(0);
-
-			testCurrentTaken = currentTaken.clone();
-			testNumberTaken = numberTaken;
-
-			for (int j = 0; j < wholeDictionary.size(); j++) {
-
-				String dicWord = wholeDictionary.get(j);
-				int dicWordLength = dicWord.length();
-				boolean wordValid = true;
-
-				if (wordLength >= dicWordLength) {
-					for (int x = 0; x < dicWordLength; x++) {
-						boolean foundChar = false;
-						for (int y = 0; y < wordLength; y++) {
-							if (dicWord.charAt(x) == currentWord.charAt(y) && testCurrentTaken[y] == 0) {
-								testNumberTaken += 1;
-								testCurrentTaken[y] = 1;
-								foundChar = true;
-								break;
-							}
-						}
-						if (foundChar == false) {
-							wordValid = false;
-							break;
-						}
-					}
-				} else {
-					wordValid = false;
-				}
-				if (wordValid == true) {
-					smallDictionary.add(dicWord);
-				}
-				testNumberTaken = numberTaken;
-				testCurrentTaken = currentTaken.clone();
-			}
-
-			if (DEBUGGING)
-				System.out.println("Dictionary Size: " + smallDictionary.size());
-
-			for (int j = 0; j < smallDictionary.size(); j++) {
-				String dicWord = smallDictionary.get(j);
-				int dicWordLength = dicWord.length();
-
-				boolean wordValid = true;
-				if (wordLength - testNumberTaken >= dicWordLength) {
-					for (int x = 0; x < dicWordLength; x++) {
-						boolean foundChar = false;
-						for (int y = 0; y < wordLength; y++) {
-							if (dicWord.charAt(x) == currentWord.charAt(y) && testCurrentTaken[y] == 0) {
-								testNumberTaken += 1;
-								testCurrentTaken[y] = 1;
-								foundChar = true;
-								break;
-							}
-						}
-						if (foundChar == false) {
-							wordValid = false;
-							testNumberTaken = numberTaken;
-							testCurrentTaken = currentTaken.clone();
-							break;
-						}
-					}
-				} else {
-					wordValid = false;
-				}
-				if (wordValid == true) {
-					numberTaken = testNumberTaken;
-					currentTaken = testCurrentTaken.clone();
-					numberTakenList.add(numberTaken);
-					indexPoints.add(j);
-					takenChars.add(currentTaken.clone());
-					testCurrentAnagram.add(dicWord);
-					j -= 1;
-				}
-
-				if (j == smallDictionary.size() - 1) {
-					if (DEBUGGING) {
-						System.out.println("First");
-						System.out.println(j);
-
-						for (int b : indexPoints) {
-							System.out.print(b + " ");
-						}
-						System.out.println("");
-						for (int b : numberTakenList) {
-							System.out.print(b + " ");
-						}
-						System.out.println("");
-						for (String b : testCurrentAnagram) {
-							System.out.print(b + " ");
-						}
-						System.out.println("");
-						for (String b : currentAnagram) {
-							System.out.print(b + " ");
-						}
-						System.out.println("");
-						for (int[] b : takenChars) {
-							for (int c : b)
-								System.out.print(c + ", ");
-							System.out.print("  ;  ");
-						}
-						System.out.println("");
-						System.out.println("");
-					}
-
-					if (numberTaken == wordLength) {
-						compareAnagrams();
-					}
-
-					if (indexPoints.size() == 1 || indexPoints.get(1) == smallDictionary.size() - 1) {
-						String anagram = "";
-						for (int k = 0; k < currentAnagram.size(); k++) {
-							anagram += " " + currentAnagram.get(k);
-						}
-						System.out.println(words.get(i) + ":" + anagram);
-						break;
-					}
-					int initial_J = j;
-
-					j = indexPoints.get(indexPoints.size() - 1);
-					moveBack();
-
-					if (j == smallDictionary.size() - 1) {
-						while (j == initial_J) {
-							j = indexPoints.get(indexPoints.size() - 1);
-							moveBack();
-						}
-						if (DEBUGGING) {
-							System.out.println("poof");
-							System.out.println(j);
-
-							for (int b : indexPoints) {
-								System.out.print(b + " ");
-							}
-							System.out.println("");
-							for (int b : numberTakenList) {
-								System.out.print(b + " ");
-							}
-							System.out.println("");
-							for (String b : testCurrentAnagram) {
-								System.out.print(b + " ");
-							}
-							System.out.println("");
-							for (String b : currentAnagram) {
-								System.out.print(b + " ");
-							}
-							System.out.println("");
-							for (int[] b : takenChars) {
-								for (int c : b)
-									System.out.print(c + ", ");
-								System.out.print("  ;  ");
-							}
-							System.out.println("");
-							System.out.println("");
-						}
-
-						/*
-						 * if (indexPoints.size() > 1) { if (j != initial_J - 1 ||
-						 * indexPoints.get(indexPoints.size() - 1) == j) { j =
-						 * indexPoints.get(indexPoints.size() - 1); moveBack(); } else { while
-						 * (indexPoints.get(indexPoints.size() - 2) == j - 1) { j =
-						 * indexPoints.get(indexPoints.size() - 1); moveBack(); } } }
-						 */
-
-					}
-					if (DEBUGGING) {
-						System.out.println("Second");
-						System.out.println(j);
-
-						for (int b : indexPoints) {
-							System.out.print(b + " ");
-						}
-						System.out.println("");
-						for (int b : numberTakenList) {
-							System.out.print(b + " ");
-						}
-						System.out.println("");
-						for (String b : testCurrentAnagram) {
-							System.out.print(b + " ");
-						}
-						System.out.println("");
-						for (String b : currentAnagram) {
-							System.out.print(b + " ");
-						}
-						System.out.println("");
-						for (int[] b : takenChars) {
-							for (int c : b)
-								System.out.print(c + ", ");
-							System.out.print("  ;  ");
-						}
-						System.out.println("");
-						System.out.println("");
-					}
-				}
-			}
-			indexPoints.clear();
-			numberTakenList.clear();
-			takenChars.clear();
 			currentAnagram.clear();
 			testCurrentAnagram.clear();
-			smallDictionary.clear();
-		}
+			bestSize = Integer.MAX_VALUE;
+			hashDictionary.clear();
+			breakRecursion = false;
 
-		long endTime = System.nanoTime();
-		long timeElapsed = endTime - startTime;
-		System.out.println(timeElapsed);
+			long endTimeZero = System.nanoTime();
+			System.out.println("Total Time: " + (endTimeZero - startTimeZero) / 1000000);
+		}
 	}
 
-	public static void moveBack() {
-		numberTakenList.remove(numberTakenList.size() - 1);
-		indexPoints.remove(indexPoints.size() - 1);
-		takenChars.remove(takenChars.size() - 1);
-
-		// Removes current word.
-		if (testCurrentAnagram.size() != 0) {
-			testCurrentAnagram.remove(testCurrentAnagram.size() - 1);
+	/**
+	 * Recursive Depth First Search function that searches through dictionary input
+	 * for the best anagram.
+	 * 
+	 * @param dictionaryInput Anagram Pool.
+	 * @param wordInput       Word we are finding the anagram for.
+	 */
+	public void recursive(ArrayList<char[]> dictionaryInput, char[] wordInput) {
+		if (wordInput.length == 0) {
+			compareAnagrams();
+			return;
+		}
+		if (breakRecursion) {
+			return;
 		}
 
-		int[] duplicate = takenChars.get(takenChars.size() - 1);
-		currentTaken = duplicate.clone();
+		// Goes through all the words in dictionaryInput.
+		for (int j = 0; j < dictionaryInput.size(); j++) {
 
-		numberTaken = numberTakenList.get(numberTakenList.size() - 1);
-		testCurrentTaken = currentTaken.clone();
-		testNumberTaken = numberTaken;
+			// Return condition.
+			if (currentAnagram.size() != 0
+					&& (testCurrentAnagram.size() + wordInput.length / dictionaryInput.get(j).length > currentAnagram
+							.size())
+					|| (testCurrentAnagram.size() + Math
+							.ceil((double) wordInput.length / dictionaryInput.get(j).length) == currentAnagram.size()
+							&& dictionaryInput.get(j).length < currentAnagram.get(testCurrentAnagram.size()).length
+							&& testCurrentAnagram.size() != currentAnagram.size() - 1)) {
+				return;
+			} else {
+				
+				int w = 0;
+				int z = 0;
+				int i = 0;
+				char[] currentWordTemp = new char[wordInput.length - dictionaryInput.get(j).length];
+				while (w < dictionaryInput.get(j).length) {
+					if (dictionaryInput.get(j)[w] == wordInput[z]) {
+						w++;
+						z++;
+					} else {
+						currentWordTemp[i] = wordInput[z];
+						i++;
+						z++;
+					}
+				}
+				while (z < wordInput.length) {
+					currentWordTemp[i] = wordInput[z];
+					i++;
+					z++;
+				}
+
+				// Add word to test Anagram.
+				testCurrentAnagram.add(hashDictionary.get(dictionaryInput.get(j)));
+
+				// Reduce smallDictionary size to words that can be formed with the remaining
+				// characters.
+				recursive(reduceDictionary(dictionaryInput.subList(j, dictionaryInput.size()), currentWordTemp),
+						currentWordTemp);
+
+				// Remove word from test anagram.
+				testCurrentAnagram.remove(testCurrentAnagram.size() - 1);
+			}
+		}
+		return;
 	}
 
-	public static void sortCurrentAnagram() {
-		int currentAnagramSize = currentAnagram.size();
-		for (int k = currentAnagramSize - 2; k >= 0; k--) {
-			for (int x = k; x < currentAnagramSize - 1; x++) {
-				if (currentAnagram.get(x).length() < currentAnagram.get(x + 1).length()) {
-					String duplicate = currentAnagram.get(x);
-					currentAnagram.set(x, currentAnagram.get(x + 1));
-					currentAnagram.set(x + 1, duplicate);
+	/**
+	 * This function creates a new smallDictionary. Words from input 'dictionary'
+	 * that can be built with the characters available, from the current word, will
+	 * be added.
+	 * 
+	 * @param dictionary Word pool to check.
+	 * @return reduced dictionary, containing only word that can be created with
+	 *         remaining characters.
+	 */
+	public ArrayList<char[]> reduceDictionary(List<char[]> dictionary, char[] currentWord) {
+		ArrayList<char[]> smallDictionary = new ArrayList<char[]>();
+
+		for (int i = 0; i < dictionary.size(); i++) {
+			char[] wordCurrent = dictionary.get(i);
+
+			if (wordCurrent.length <= currentWord.length) {
+				if (testCurrentAnagram.size() + 1 < bestSize
+						|| (testCurrentAnagram.size() + 1 == bestSize && currentWord.length == wordCurrent.length)) {
+					int j = 0;
+					int k = 0;
+					while (j < wordCurrent.length && k < currentWord.length) {
+						if (wordCurrent[j] == currentWord[k]) {
+							j++;
+							k++;
+						} else if (wordCurrent[j] < currentWord[k]) {
+							break;
+						} else {
+							k++;
+						}
+					}
+					if (j == wordCurrent.length) {
+						smallDictionary.add(wordCurrent);
+					}
+				}
+			}
+		}
+		return smallDictionary;
+	}
+
+	/**
+	 * Slightly different from reduceDictionary, works on rawDictionary so words are
+	 * unsorted in characters.
+	 */
+	public ArrayList<char[]> initialReduce(char[] currentWord) {
+		ArrayList<char[]> smallDictionary = new ArrayList<char[]>();
+
+		for (int i = 0; i < rawDictionary.size(); i++) {
+			char[] wordCurrent = rawDictionary.get(i).clone();
+			Arrays.sort(wordCurrent);
+
+			if (wordCurrent.length <= currentWord.length) {
+				int j = 0;
+				int k = 0;
+				while (j < wordCurrent.length && k < currentWord.length) {
+					if (wordCurrent[j] == currentWord[k]) {
+						j++;
+						k++;
+					} else if (wordCurrent[j] < currentWord[k]) {
+						break;
+					} else {
+						k++;
+					}
+				}
+				if (j == wordCurrent.length) {
+					smallDictionary.add(rawDictionary.get(i));
+				}
+			}
+
+		}
+
+		return smallDictionary;
+	}
+
+	/**
+	 * This function compares testCurrentAngram and currentAnagram and determines
+	 * which is better. if testCurrentAnagram is better, currentAnagram gets
+	 * replaced.
+	 */
+	public void compareAnagrams() {
+		if (currentAnagram.size() == 0 || currentAnagram.size() > testCurrentAnagram.size()) {
+
+			currentAnagram = new ArrayList<char[]>(testCurrentAnagram);
+
+			// Checks if currentAnagram is optimal.
+			if ((currentWordLength / currentAnagram.get(0).length == currentAnagram.size()
+					&& currentWordLength % currentAnagram.get(0).length == 0)
+					|| ((currentWordLength / currentAnagram.get(0).length) + 1 == currentAnagram.size()
+							&& currentWordLength % currentAnagram.get(0).length == currentAnagram
+									.get(currentAnagram.size() - 1).length)) {
+				breakRecursion = true;
+			}
+
+			bestSize = currentAnagram.size();
+
+		} else if (currentAnagram.size() == testCurrentAnagram.size()) {
+
+			// We create a duplicate of testCurrentAnagram which we sort from largest to
+			// smallest to compare with currentAnagram. We can't sort testCurrentAnagram
+			// since if we do, the corresponding information in the other array lists will
+			// no longer be valid, so we only sort it if it becomes the best anagram.
+			ArrayList<char[]> testCurrentAnagramOne = new ArrayList<char[]>(testCurrentAnagram);
+
+			boolean done = false;
+
+			// We compare from largest word to smallest, if at any instance the word from
+			// testCurrentAnagram is larger, it becomes currentAnagram.
+			for (int k = 0; k < currentAnagram.size() - 1; k++) {
+				if (testCurrentAnagramOne.get(k).length < currentAnagram.get(k).length) {
+					done = true;
+					break;
+				}
+				if (testCurrentAnagramOne.get(k).length > currentAnagram.get(k).length) {
+					currentAnagram = new ArrayList<char[]>(testCurrentAnagramOne);
+
+					// Checks if currentAnagram is optimal.
+					if ((currentWordLength / currentAnagram.get(0).length == currentAnagram.size()
+							&& currentWordLength % currentAnagram.get(0).length == 0)
+							|| ((currentWordLength / currentAnagram.get(0).length) + 1 == currentAnagram.size()
+									&& currentWordLength % currentAnagram.get(0).length == currentAnagram
+											.get(currentAnagram.size() - 1).length)) {
+						breakRecursion = true;
+					}
+
+					done = true;
+					break;
+				}
+			}
+
+			// If all words at corresponding indexes have equal length between the two, we
+			// iterate through them all again starting from the largest, and if at any
+			// instance, the first character in a word in testCurrentAnagram comes first in
+			// the alphabet than the corresponding first character in the word from
+			// currentAnagram, then testCurrentAnagram becomes currentAnagram.
+			if (!done) {
+				for (int j = 0; j < currentAnagram.size(); j++) {
+					for (int k = 0; k < currentAnagram.get(j).length; k++) {
+
+						char currentChar = currentAnagram.get(j)[k];
+						char testChar = testCurrentAnagramOne.get(j)[k];
+
+						if (currentChar < 91) {
+							currentChar += 32;
+						}
+						if (testChar < 91) {
+							testChar += 32;
+						}
+						if (currentChar > testChar) {
+							currentAnagram = new ArrayList<char[]>(testCurrentAnagramOne);
+
+							// Checks if currentAnagram is optimal.
+							if ((currentWordLength / currentAnagram.get(0).length == currentAnagram.size()
+									&& currentWordLength % currentAnagram.get(0).length == 0)
+									|| ((currentWordLength / currentAnagram.get(0).length) + 1 == currentAnagram.size()
+											&& currentWordLength % currentAnagram.get(0).length == currentAnagram
+													.get(currentAnagram.size() - 1).length)) {
+								breakRecursion = true;
+							}
+
+							j = currentAnagram.size();
+							break;
+						} else if (currentChar < testChar) {
+							j = currentAnagram.size();
+							break;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	/**
+	 * This function sorts the characters of each word in smallDictionary. It also
+	 * sorts smallDictionary from smallest to largest. For words that use the same
+	 * characters, it picks the best one (best being alphabetically higher, where (a
+	 * > z). Then we re-sort the character-sorted words alphabetically based on the
+	 * unsorted word that is still in inputDictionary, hence why we sort it
+	 * alongside smallDictionary. Then we add the unsorted words to the hashTable
+	 * with the corresponding sorted word (sorted in characters).
+	 * 
+	 * This could be done initially with the rawDictionary, but I'm currently using
+	 * bubble sort which works well with smaller sizes, and I'm not in the mood to
+	 * implement Merge Sort atm.
+	 * 
+	 * @param dictionary word pool to be sorted and added to hashTable.
+	 * @return sorted word pool.
+	 */
+	public ArrayList<char[]> initialSorting(ArrayList<char[]> dictionary) {
+		ArrayList<char[]> inputDictionary = new ArrayList<char[]>(dictionary);
+		ArrayList<char[]> smallDictionary = new ArrayList<char[]>();
+
+		smallDictionary.clear();
+
+		for (int i = 0; i < inputDictionary.size(); i++) {
+			char[] currentWord = inputDictionary.get(i).clone();
+			Arrays.sort(currentWord);
+
+			smallDictionary.add(currentWord);
+		}
+
+		// Similar to sortAnagram, except works on two array lists.
+		for (int k = smallDictionary.size() - 2; k >= 0; k--) {
+			for (int x = k; x < smallDictionary.size() - 1; x++) {
+				if (smallDictionary.get(x).length < smallDictionary.get(x + 1).length) {
+					char[] duplicate = smallDictionary.get(x).clone();
+					smallDictionary.set(x, smallDictionary.get(x + 1));
+					smallDictionary.set(x + 1, duplicate);
+
+					duplicate = inputDictionary.get(x).clone();
+					inputDictionary.set(x, inputDictionary.get(x + 1));
+					inputDictionary.set(x + 1, duplicate);
+				} else if (smallDictionary.get(x).length == smallDictionary.get(x + 1).length) {
+					boolean found = false;
+					for (int y = 0; y < smallDictionary.get(x).length; y++) {
+
+						char currentChar = smallDictionary.get(x)[y];
+						char testChar = smallDictionary.get(x + 1)[y];
+
+						if (currentChar < 91) {
+							currentChar += 32;
+						}
+						if (testChar < 91) {
+							testChar += 32;
+						}
+						if (currentChar > testChar) {
+							char[] duplicate = smallDictionary.get(x).clone();
+							smallDictionary.set(x, smallDictionary.get(x + 1));
+							smallDictionary.set(x + 1, duplicate);
+
+							duplicate = inputDictionary.get(x).clone();
+							inputDictionary.set(x, inputDictionary.get(x + 1));
+							inputDictionary.set(x + 1, duplicate);
+							break;
+						} else if (currentChar < testChar) {
+							found = true;
+							break;
+						}
+					}
+					if (found) {
+						break;
+					}
 				} else {
 					break;
 				}
 			}
 		}
+
+		for (int i = 0; i < smallDictionary.size() - 1; i++) {
+			if (Arrays.equals(smallDictionary.get(i), (smallDictionary.get(i + 1)))) {
+				if (!Arrays.equals(inputDictionary.get(i), (inputDictionary.get(i + 1)))) {
+					for (int y = 0; y < inputDictionary.get(i).length; y++) {
+
+						char currentChar = inputDictionary.get(i)[y];
+						char testChar = inputDictionary.get(i + 1)[y];
+
+						if (currentChar < 91) {
+							currentChar += 32;
+						}
+						if (testChar < 91) {
+							testChar += 32;
+						}
+						if (currentChar > testChar) {
+							inputDictionary.remove(i);
+							smallDictionary.remove(i);
+							break;
+						} else if (currentChar < testChar) {
+							inputDictionary.remove(i + 1);
+							smallDictionary.remove(i + 1);
+							break;
+						}
+					}
+				} else {
+					inputDictionary.remove(i);
+					smallDictionary.remove(i);
+				}
+				i -= 1;
+			}
+		}
+
+		smallDictionary = sortAnagram(smallDictionary, inputDictionary);
+
+		for (int i = 0; i < smallDictionary.size(); i++) {
+			hashDictionary.put(smallDictionary.get(i), inputDictionary.get(i));
+		}
+
+		return smallDictionary;
 	}
 
-	public static void compareAnagrams() {
-		int currentAnagramSize = currentAnagram.size();
-		int testCurrentAnagramSize = testCurrentAnagram.size();
+	/**
+	 * This function takes an ArrayList<String> that will be sorted by comparing
+	 * alphabetical order of each char (a first before b).
+	 * 
+	 * @param anagram
+	 * @return sorted anagram
+	 */
+	public ArrayList<char[]> sortAnagram(ArrayList<char[]> sortedChar, ArrayList<char[]> unsortedChar) {
+		for (int k = sortedChar.size() - 2; k >= 0; k--) {
+			for (int x = k; x < sortedChar.size() - 1; x++) {
+				if (sortedChar.get(x).length == sortedChar.get(x + 1).length) {
 
-		if (currentAnagram.isEmpty() || currentAnagramSize == 0 || currentAnagramSize > testCurrentAnagramSize) {
+					boolean found = false;
+					char[] wordOne = unsortedChar.get(x);
+					char[] wordTwo = unsortedChar.get(x + 1);
 
-			currentAnagram = new ArrayList<String>(testCurrentAnagram);
+					for (int y = 0; y < sortedChar.get(x).length; y++) {
 
-		} else if (currentAnagramSize == testCurrentAnagramSize) {
+						char currentChar = wordOne[y];
+						char testChar = wordTwo[y];
 
-			ArrayList<String> currentAnagramOne = new ArrayList<String>(currentAnagram);
-			ArrayList<String> testCurrentAnagramOne = new ArrayList<String>(testCurrentAnagram);
+						if (currentChar < 91) {
+							currentChar += 32;
+						}
+						if (testChar < 91) {
+							testChar += 32;
+						}
+						if (currentChar > testChar) {
+							char[] duplicate = sortedChar.get(x).clone();
+							sortedChar.set(x, sortedChar.get(x + 1));
+							sortedChar.set(x + 1, duplicate);
 
-			for (int k = currentAnagramSize - 2; k >= 0; k--) {
-				for (int x = k; x < testCurrentAnagramOne.size() - 1; x++) {
-					if (testCurrentAnagramOne.get(x).length() < testCurrentAnagramOne.get(x + 1).length()) {
-						String duplicate = testCurrentAnagramOne.get(x);
-						testCurrentAnagramOne.set(x, testCurrentAnagramOne.get(x + 1));
-						testCurrentAnagramOne.set(x + 1, duplicate);
-					} else {
+							duplicate = unsortedChar.get(x).clone();
+							unsortedChar.set(x, unsortedChar.get(x + 1));
+							unsortedChar.set(x + 1, duplicate);
+							break;
+						} else if (currentChar < testChar) {
+							found = true;
+							break;
+						}
+					}
+					if (found) {
 						break;
 					}
-				}
-				for (int x = k; x < currentAnagramSize - 1; x++) {
-					if (currentAnagramOne.get(x).length() < currentAnagramOne.get(x + 1).length()) {
-						String duplicate = currentAnagramOne.get(x);
-						currentAnagramOne.set(x, currentAnagramOne.get(x + 1));
-						currentAnagramOne.set(x + 1, duplicate);
-					} else {
-						break;
-					}
-				}
-			}
-
-			boolean done = false;
-
-			if (currentAnagramOne.get(0).length() == testCurrentAnagramOne.get(0).length()) {
-				for (int k = 0; k < currentAnagramSize - 1; k++) {
-					if (testCurrentAnagramOne.get(k).length() > currentAnagramOne.get(k).length()) {
-						System.out.println("Swapped One");
-						currentAnagram = new ArrayList<String>(testCurrentAnagram);
-						done = true;
-						break;
-					}
-				}
-			}
-
-			// Sorts anagram in alphabetical order.
-			if (!done) {
-				for (int k = 0; k < currentAnagramSize - 1; k++) {
-					char currentChar = currentAnagramOne.get(k).charAt(0);
-					char testChar = testCurrentAnagramOne.get(k).charAt(0);
-					if (currentChar < 91) {
-						currentChar += 32;
-					}
-					if (testChar < 91) {
-						testChar += 32;
-					}
-					if (currentChar > testChar) {
-						System.out.println("Swapped Two");
-						currentAnagram = new ArrayList<String>(testCurrentAnagram);
-						break;
-					}
+				} else {
+					break;
 				}
 			}
 		}
+		return sortedChar;
 	}
-
 }

@@ -14,7 +14,8 @@ import java.util.Scanner;
  *
  */
 public class World {
-	private static int inputType = 1;
+	final static boolean DEBUGGING = false;
+	private static int inputType = 0;
 
 	private static String coordString[] = new String[8];
 	private static String currentString;
@@ -51,8 +52,10 @@ public class World {
 
 	// We need these info so we know whether to make signed = true if we skipped
 	// degrees or minutes
+	private static boolean foundFirstSec;
 	private static boolean foundFirstDeg;
 	private static boolean foundSecondDeg;
+	private static boolean foundSecondSec;
 	private static boolean foundFirstMin;
 	private static boolean foundSecondMin;
 
@@ -68,7 +71,9 @@ public class World {
 			BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("coordinates.txt")));
 			try {
 				while ((inputCoordinate = br.readLine()) != null) {
-					classifyInput();
+					if (!inputCoordinate.equals("")) {
+						classifyInput();
+					}
 				}
 			} finally {
 				br.close();
@@ -77,7 +82,9 @@ public class World {
 			Scanner scan = new Scanner(System.in);
 			while (scan.hasNextLine()) {
 				inputCoordinate = scan.nextLine();
-				classifyInput();
+				if (!inputCoordinate.equals("")) {
+					classifyInput();
+				}
 			}
 			scan.close();
 		}
@@ -119,6 +126,8 @@ public class World {
 		directionFound = false;
 		signed = false;
 
+		foundFirstSec = false;
+		foundSecondSec = false;
 		foundFirstDeg = false;
 		foundSecondDeg = false;
 		foundFirstMin = false;
@@ -162,7 +171,8 @@ public class World {
 					currentChar = inputCoordinate.charAt(currentIndex);
 				} else {
 					if (coordsFound == 0) {
-						// System.out.println("1");
+						if (DEBUGGING)
+							System.out.println("1");
 						invalidInput = true;
 					}
 					isLast = true;
@@ -206,7 +216,8 @@ public class World {
 						break;
 					}
 				}
-
+				if (DEBUGGING)
+					System.out.println("current case number section: " + currentCase);
 				// If looking for a Direction but instead got a number at the start
 				if (signFirst == false) {
 					if (currentCase == 0 || currentCase == 8) {
@@ -230,8 +241,9 @@ public class World {
 						if (currentCase == 6) {
 							currentCase += 2;
 						}
-						if (signed == true) {
-							// System.out.println("2");
+						if (signed) {
+							if (DEBUGGING)
+								System.out.println("2");
 							invalidInput = true;
 							currentCase = 16;
 						}
@@ -257,14 +269,24 @@ public class World {
 					}
 					currentCase += 1;
 				}
+
 				if (signed == true) {
-					lookingForSign = true;
+					if (lookingForSign == false) {
+						lookingForSign = true;
+					}else {
+						if (DEBUGGING)
+							System.out.println("2.5");
+						invalidInput = true;
+						currentCase = 16;
+					}
 				}
 				currentCoordString = newCoord;
 			}
 
 			// Checks if the direction comes first.
 			if (currentCase == 0 && isWord == true) {
+				if (DEBUGGING)
+					System.out.println("current case: " + currentCase);
 				if (currentString.equalsIgnoreCase("N") || currentString.equalsIgnoreCase("north")) {
 					coordString[3] = "N";
 					directionFound = true;
@@ -308,9 +330,17 @@ public class World {
 			// This deals with all the remaining cases up to 16
 			if (isWord == true) {
 				if (currentCase == 2) {
+					if (DEBUGGING)
+						System.out.println("current case: " + currentCase);
 					if (currentString.equalsIgnoreCase("d") || currentString.equalsIgnoreCase("deg")
 							|| currentString.equalsIgnoreCase("degree") || currentString.equalsIgnoreCase("degrees")
 							|| currentString.equals("\u00B0")) {
+						if (foundFirstMin || foundFirstSec || foundFirstDeg) {
+							if (DEBUGGING)
+								System.out.println("2.7");
+							invalidInput = true;
+							currentCase = 16;
+						}
 						signed = true;
 						foundFirstDeg = true;
 						coordString[coordCase] = currentCoordString;
@@ -324,22 +354,27 @@ public class World {
 				}
 				// skips the minutes and seconds.
 				if (currentCase == 3) {
+					if (DEBUGGING)
+						System.out.println("current case: " + currentCase);
 					currentCase += 4;
 					coordCase += 3;
 				}
 				if (currentCase == 4) {
+					if (DEBUGGING)
+						System.out.println("current case: " + currentCase);
 					if (currentString.equalsIgnoreCase("m") || currentString.equalsIgnoreCase("min")
 							|| currentString.equalsIgnoreCase("minute") || currentString.equalsIgnoreCase("minutes")
 							|| currentString.equals("\u2032")) {
-						foundFirstMin = true;
 						if (foundFirstDeg == false) {
 							signed = true;
 						}
-						if (signed == false) {
-							// System.out.println("3");
+						if (signed == false || foundFirstSec || foundFirstMin) {
+							if (DEBUGGING)
+								System.out.println("3");
 							invalidInput = true;
 							currentCase = 16;
 						}
+						foundFirstMin = true;
 						coordString[coordCase] = currentCoordString;
 						lookingForSign = false;
 						coordsFound += 1;
@@ -353,10 +388,14 @@ public class World {
 				// This is needed when there is only degrees and minutes without seconds, skips
 				// the third coordinate.
 				if (currentCase == 5) {
+					if (DEBUGGING)
+						System.out.println("current case: " + currentCase);
 					currentCase += 2;
 					coordCase += 2;
 				}
 				if (currentCase == 6) {
+					if (DEBUGGING)
+						System.out.println("current case: " + currentCase);
 					if (currentString.equalsIgnoreCase("s") || currentString.equalsIgnoreCase("sec")
 							|| currentString.equalsIgnoreCase("second") || currentString.equalsIgnoreCase("seconds")
 							|| currentString.equals("\u2033")) {
@@ -368,53 +407,59 @@ public class World {
 							}
 						}
 						// Because if s or S, then it is probably a direction, so we move to next case.
-						if (signed == false && !currentString.equalsIgnoreCase("s")) {
-							// System.out.println("4");
+						if ((signed == false && !currentString.equalsIgnoreCase("s")) || foundFirstSec) {
+							if (DEBUGGING)
+								System.out.println("4");
 							invalidInput = true;
 							currentCase = 16;
 						}
+						foundFirstSec = true;
 						coordString[coordCase] = currentCoordString;
 						lookingForSign = false;
 						coordsFound += 1;
 						coordCase += 2;
-						if (signed == false) {
-							currentCase += 1;
-						} else {
-							caseChangeBy += 1;
-						}
+						caseChangeBy += 1;
+
 					} else {
 						currentCase += 1;
 					}
 				}
 				if (currentCase == 7) {
+					if (DEBUGGING)
+						System.out.println("current case: " + currentCase);
 					if (lookingForSign == true) {
-						// System.out.println("5");
+						if (DEBUGGING)
+							System.out.println("5");
 						invalidInput = true;
+						currentCase = 16;
 					} else {
 						int directionIndex = 3;
 						if (directionFound == true) {
 							directionIndex = 7;
-						} else {
-							directionFound = true;
 						}
 						if (!coordString[3].equalsIgnoreCase("N") && !coordString[3].equals("S")
 								&& currentString.equalsIgnoreCase("N") || currentString.equalsIgnoreCase("north")) {
 							coordString[directionIndex] = "N";
 							currentCase += 2;
+							directionFound = true;
 						} else if (!coordString[3].equalsIgnoreCase("N") && !coordString[3].equals("S")
 								&& currentString.equalsIgnoreCase("S") || currentString.equalsIgnoreCase("south")) {
 							coordString[directionIndex] = "S";
 							currentCase += 2;
+							directionFound = true;
 						} else if (!coordString[3].equalsIgnoreCase("E") && !coordString[3].equals("W")
 								&& currentString.equalsIgnoreCase("E") || currentString.equalsIgnoreCase("east")) {
 							coordString[directionIndex] = "E";
 							currentCase += 2;
+							directionFound = true;
 						} else if (!coordString[3].equalsIgnoreCase("E") && !coordString[3].equals("W")
 								&& currentString.equalsIgnoreCase("W") || currentString.equalsIgnoreCase("west")) {
 							coordString[directionIndex] = "W";
 							currentCase += 2;
+							directionFound = true;
 						} else {
-							// System.out.println("6");
+							if (DEBUGGING)
+								System.out.println("6");
 							invalidInput = true;
 							currentCase = 16;
 						}
@@ -435,19 +480,22 @@ public class World {
 					}
 				}
 				if (currentCase == 10) {
+					if (DEBUGGING)
+						System.out.println("current case: " + currentCase);
 					if (currentString.equalsIgnoreCase("d") || currentString.equalsIgnoreCase("deg")
 							|| currentString.equalsIgnoreCase("degree") || currentString.equalsIgnoreCase("degrees")
 							|| currentString.equals("\u00B0")) {
-						foundSecondDeg = true;
 						if (confusedS) {
 							signed = true;
 							confusedS = false;
 						}
-						if (signed == false) {
-							// System.out.println("7");
+						if (signed == false || foundSecondMin || foundSecondSec || foundSecondDeg) {
+							if (DEBUGGING)
+								System.out.println("7");
 							invalidInput = true;
 							currentCase = 16;
 						}
+						foundSecondDeg = true;
 						coordString[coordCase] = currentCoordString;
 						lookingForSign = false;
 						coordsFound += 1;
@@ -460,22 +508,27 @@ public class World {
 
 				}
 				if (currentCase == 11) {
+					if (DEBUGGING)
+						System.out.println("current case: " + currentCase);
 					currentCase += 4;
 				}
 				if (currentCase == 12) {
+					if (DEBUGGING)
+						System.out.println("current case: " + currentCase);
 					if (currentString.equalsIgnoreCase("m") || currentString.equalsIgnoreCase("min")
 							|| currentString.equalsIgnoreCase("minute") || currentString.equalsIgnoreCase("minutes")
 							|| currentString.equals("\u2032")) {
-						foundSecondMin = true;
 						if (confusedS) {
 							signed = true;
 							confusedS = false;
 						}
-						if (signed == false) {
-							// System.out.println("8");
+						if (signed == false || foundSecondSec || foundSecondMin) {
+							if (DEBUGGING)
+								System.out.println("8");
 							invalidInput = true;
 							currentCase = 16;
 						}
+						foundSecondMin = true;
 						coordString[coordCase] = currentCoordString;
 						lookingForSign = false;
 						coordsFound += 1;
@@ -487,10 +540,14 @@ public class World {
 					}
 				}
 				if (currentCase == 13) {
+					if (DEBUGGING)
+						System.out.println("current case: " + currentCase);
 					currentCase += 2;
 					coordCase += 2;
 				}
 				if (currentCase == 14) {
+					if (DEBUGGING)
+						System.out.println("current case: " + currentCase);
 					if (currentString.equalsIgnoreCase("s") || currentString.equalsIgnoreCase("sec")
 							|| currentString.equals("\u2033") || currentString.equalsIgnoreCase("second")
 							|| currentString.equalsIgnoreCase("seconds")) {
@@ -498,11 +555,13 @@ public class World {
 							signed = true;
 							confusedS = false;
 						}
-						if (signed == false) {
-							// System.out.println("9");
+						if (signed == false || foundSecondSec) {
+							if (DEBUGGING)
+								System.out.println("9");
 							invalidInput = true;
 							currentCase = 16;
 						}
+						foundSecondSec = true;
 						coordString[coordCase] = currentCoordString;
 						lookingForSign = false;
 						coordsFound += 1;
@@ -513,8 +572,11 @@ public class World {
 					}
 				}
 				if (currentCase == 15) {
+					if (DEBUGGING)
+						System.out.println("current case: " + currentCase);
 					if (lookingForSign == true) {
-						// System.out.println("10 ");
+						if (DEBUGGING)
+							System.out.println("10 ");
 						invalidInput = true;
 					} else {
 						if (confusedS) {
@@ -553,7 +615,8 @@ public class World {
 								coordString[7] = "W";
 								currentCase += 1;
 							} else {
-								// System.out.println("11");
+								if (DEBUGGING)
+									System.out.println("11");
 								invalidInput = true;
 								currentCase = 16;
 							}
@@ -570,7 +633,8 @@ public class World {
 							|| currentCase == 12 || currentCase == 14)) {
 				coordString[coordCase] = currentCoordString;
 				if (coordsFound == 0) {
-					// System.out.println("12");
+					if (DEBUGGING)
+						System.out.println("12");
 					invalidInput = true;
 				}
 				coordsFound += 1;
@@ -601,7 +665,8 @@ public class World {
 					coordString[7] = "N";
 				}
 			} else if (currentCase < 14 && currentCase > 9 && currentIndex >= inputLength && hasComma == false) {
-				// System.out.println("13");
+				if (DEBUGGING)
+					System.out.println("13");
 				invalidInput = true;
 			}
 
@@ -610,7 +675,8 @@ public class World {
 			if (currentCase >= 16) {
 				while (currentIndex < inputLength) {
 					if (inputCoordinate.charAt(currentIndex) != ' ') {
-						// System.out.println("14");
+						if (DEBUGGING)
+							System.out.println("14");
 						invalidInput = true;
 						break;
 					}
@@ -618,18 +684,15 @@ public class World {
 				}
 			}
 		}
-		if(!directionFound) {
+		if (!directionFound) {
 			coordString[3] = "N";
 			coordString[7] = "E";
 		}
 
-		if (invalidInput) {
-			System.out.println("Unable to process: " + inputCoordinate);
-		}
-
-		/*
-		 * for (String a : coordString) { System.out.println(a); }
-		 */
+		if (DEBUGGING)
+			for (String a : coordString) {
+				System.out.println(a);
+			}
 
 		convertStandard(coordString);
 	}
@@ -650,31 +713,48 @@ public class World {
 		float min2 = Float.parseFloat(coordinates[5]);
 		float sec2 = Float.parseFloat(coordinates[6]);
 
-		if (min1 > 60 || sec1 > 60 || min2 > 60 || sec2 > 60) {
+		if (invalidInput || min1 > 60 || sec1 > 60 || min2 > 60 || sec2 > 60 || min1 < 0 || sec1 < 0 || min2 < 0
+				|| sec2 < 0) {
 			System.out.println("Unable to process: " + inputCoordinate);
 		} else {
 			// These lines converts the three coordinates (deg, min, sec) into just
 			// degrees.
 			float[] floatCoord = new float[2];
-			if (coordinates[3].equalsIgnoreCase("N") || coordinates[7].equalsIgnoreCase("S")) {
+			if (coordinates[3].equalsIgnoreCase("N") || coordinates[3].equalsIgnoreCase("S")) {
 				floatCoord[0] = deg1 + (min1 + sec1 / 60) / 60;
 				floatCoord[1] = deg2 + (min2 + sec2 / 60) / 60;
 			} else {
 				floatCoord[0] = deg2 + (min2 + sec2 / 60) / 60;
 				floatCoord[1] = deg1 + (min1 + sec1 / 60) / 60;
 			}
-			if (Math.abs(floatCoord[1]) > 90 || (directionFound && (floatCoord[0] < 0 || floatCoord[1] < 0))) {
+			if (Math.abs(floatCoord[0]) > 90 || (directionFound && (floatCoord[0] < 0 || floatCoord[1] < 0))) {
 				System.out.println("Unable to process: " + inputCoordinate);
 			} else {
 
-				if (Math.abs(floatCoord[0]) > 180) {
-					floatCoord[0] = floatCoord[0] % 180;
-				}
 				if (coordinates[3].equalsIgnoreCase("S") || coordinates[3].equalsIgnoreCase("W")) {
-					floatCoord[0] = floatCoord[0] * -1;
+					if (floatCoord[0] != 0) {
+						floatCoord[0] = floatCoord[0] * -1;
+					}
 				}
 				if (coordinates[7].equalsIgnoreCase("S") || coordinates[7].equalsIgnoreCase("W")) {
-					floatCoord[1] = floatCoord[1] * -1;
+					if (floatCoord[1] != 0) {
+						floatCoord[1] = floatCoord[1] * -1;
+					}
+				}
+
+				if (Math.abs(floatCoord[1]) > 180) {
+					floatCoord[1] = floatCoord[1] % 360;
+					if (Math.abs(floatCoord[1]) > 180 && floatCoord[1] > 0) {
+						floatCoord[1] = floatCoord[1] - 360;
+					} else if (Math.abs(floatCoord[1]) >= 180 && floatCoord[1] < 0) {
+						floatCoord[1] = 360 + floatCoord[1];
+					}
+				}
+
+				for (int i = 0; i < 2; i++) {
+					if (floatCoord[i] == 0) {
+						floatCoord[i] = 0f;
+					}
 				}
 
 				String[] stringCoord = new String[2];
