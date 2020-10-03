@@ -128,12 +128,9 @@ public class Anagram {
 			compareAnagrams();
 			return;
 		}
-		if (breakRecursion) {
-			return;
-		}
 
 		// Goes through all the words in dictionaryInput.
-		for (int j = 0; j < dictionaryInput.size(); j++) {
+		for (int j = 0; j < dictionaryInput.size() && !breakRecursion; j++) {
 
 			// Return condition.
 			if (currentAnagram.size() != 0
