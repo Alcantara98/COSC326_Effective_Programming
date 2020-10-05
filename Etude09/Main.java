@@ -14,9 +14,9 @@ public class Main {
                 universe.add(inputLine);
             }
             if(inputLine == "" || !scan.hasNextLine()){
-                System.out.println("Hello");
                 Epedemic epic = new Epedemic(universe);
                 epic.runA();
+                universe.clear();
             }
         }
     }
