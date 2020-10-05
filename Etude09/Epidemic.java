@@ -8,17 +8,19 @@ import static java.lang.System.out;
  * 
  * @author Elbert Alcantara
  */
-public class Epedemic {
+public class Epidemic {
 
   private char[][] universe;
   private char[][] uniSickInitial;
+  int counter;
 
   /**
    * Constructor for Epedemic.
    * 
    * @param newUniverse Gridworld to calculate.
    */
-  public Epedemic(ArrayList<String> newUniverse) {
+  public Epidemic(ArrayList<String> newUniverse) {
+    counter = 0;
 
     universe = new char[newUniverse.size()][newUniverse.get(0).length()];
     uniSickInitial = new char[newUniverse.size()][newUniverse.get(0).length()];
@@ -35,11 +37,21 @@ public class Epedemic {
    * Used for running application A.
    */
   public void runA() {
+    countSickened(universe);
+    printUni(universe);
+  }
+
+  /**
+   * Used for running application B.
+   */
+  public void runB() {
+
     mustBeSick();
-    printUni(uniSickInitial);
+
     int y = 0;
     int x = 0;
     int bestScore = 1;
+
     while (bestScore != 0) {
 
       bestScore = 0;
@@ -68,17 +80,12 @@ public class Epedemic {
         universe[y][x] = 'S';
         uniSickInitial[y][x] = 'S';
         countSickened(universe);
+        counter++;
       }
     }
 
+    out.println(counter);
     printUni(uniSickInitial);
-  }
-
-  /**
-   * Used for running application B.
-   */
-  public void runB() {
-    printUni(universe);
   }
 
   /**
@@ -86,7 +93,7 @@ public class Epedemic {
    * people to be sick for best results.This method does that right at the start.
    */
   private void mustBeSick() {
-    
+
     // Condition: Only one vulnerable neighbor.
     for (int i = 0; i < universe.length; i++) {
       for (int j = 0; j < universe[0].length; j++) {
@@ -125,6 +132,7 @@ public class Epedemic {
           if (noSick && sickCount < 2) {
             universe[i][j] = 'S';
             uniSickInitial[i][j] = 'S';
+            counter++;
           }
         }
       }
@@ -184,6 +192,7 @@ public class Epedemic {
           if (noSick && sickCount == 4) {
             universe[i][j] = 'S';
             uniSickInitial[i][j] = 'S';
+            counter++;
           }
         }
       }
