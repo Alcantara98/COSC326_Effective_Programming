@@ -1,5 +1,12 @@
 import java.util.ArrayList;
 
+/**
+ * An application for solving Social Distancing Gridworld Problem. Etude08
+ * 
+ * @author Elbert Alcantara
+ * @author Christopher Groenewegen
+ * @author John KJ Kim
+ */
 public class Distance {
   private int rows, cols;
 
@@ -16,15 +23,11 @@ public class Distance {
   // block.
   private ArrayList<Integer> testPeople;
 
+  // Used to stop recursive function.
   private boolean foundBlocker;
 
-  private int minSeatedDist;
-
-  private boolean minSeatedDistZero;
-
+  // Total distance from seatd people from path.
   private int totalDistance;
-
-  private final boolean DEBUGGING = true;
 
   /**
    * Constructor for Distance.
@@ -39,7 +42,7 @@ public class Distance {
 
     grid = new boolean[rows][cols];
 
-    seatedPeople = new ArrayList<int[]>(seatedArray);
+    seatedPeople = seatedArray;
 
     seatedExpansion = new ArrayList<Integer>();
 
@@ -47,52 +50,41 @@ public class Distance {
 
     foundBlocker = false;
 
-    for (int i = 0; i < rows; i++) {
-      for (int j = 0; j < cols; j++) {
-        grid[i][j] = true;
+    if (seatedArray.size() != 0) {
+      for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+          grid[i][j] = true;
+        }
       }
-    }
 
-    for (int[] seated : seatedPeople) {
-      grid[seated[0]][seated[1]] = false;
-    }
-    if (!checkGrid(grid)) {
-      minSeatedDistZero = true;
-    } else {
-      minSeatedDistZero = false;
-    }
-    for (int[] seated : seatedPeople) {
-      grid[seated[0]][seated[1]] = true;
-    }
+      for (int i = 0; i < seatedPeople.size(); i++) {
+        seatedExpansion.add(0);
+      }
 
-    for (int i = 0; i < seatedPeople.size(); i++) {
-      seatedExpansion.add(0);
+      totalDistance = 0;
     }
-    minSeatedDist = 0;
-    totalDistance = 0;
   }
 
   /**
    * Runs the Social Distancing Application;
    */
   public void run() {
-    if (!minSeatedDistZero) {
-      minSeatedDist = expandCount();
-    }
-    while (seatedPeople.size() != 0) {
-      int expand = expandCount();
-      expandAllBy(expand);
-      //printGrid(grid);
-      //System.out.println(expand);
+    int minSeatedDist = expandCount();
 
-      for (int i = 1; i < seatedPeople.size() + 1 && !foundBlocker; i++) {
-        combinations(0, i, 0);
+    if (seatedPeople.size() != 0) {
+      while (seatedPeople.size() != 0) {
+        printGrid(grid);
+        int expand = expandCount();
+        expandAllBy(expand);
+        // System.out.println(seatedPeople.size() + " " + expand);
+        for (int i = 1; i < seatedPeople.size() + 1 && !foundBlocker; i++) {
+          combinations(0, i, 0);
+        }
+
+        foundBlocker = false;
+        testPeople.clear();
       }
-
-      foundBlocker = false;
-      testPeople.clear();
     }
-    
     printGrid(grid);
     System.out.println("min " + minSeatedDist + ", total " + totalDistance);
   }
@@ -102,10 +94,9 @@ public class Distance {
    * amount of seated people to test if the group is responsible for blocking the
    * next expansion.
    * 
-   * @param depth
-   * @param maxDepth
-   * @param pool
-   * @param index
+   * @param depth    Current depth in the tree.
+   * @param maxDepth Max depth to search.
+   * @param index    Current index in the for loop.
    */
   private void combinations(int depth, int maxDepth, int index) {
     if (depth == maxDepth) {
@@ -113,21 +104,25 @@ public class Distance {
       for (int i = 0; i < rows; i++) {
         gridCopy[i] = grid[i].clone();
       }
-
       for (int i = 0; i < testPeople.size(); i++) {
         int x = seatedPeople.get(testPeople.get(i))[0];
         int y = seatedPeople.get(testPeople.get(i))[1];
         int distance = seatedExpansion.get(testPeople.get(i));
         removeNodes(x, y, distance + 1, gridCopy);
       }
+      // printGrid(gridCopy);
 
       if (!checkGrid(gridCopy)) {
-        for (int i = 0; i < testPeople.size(); i++) {
-          int indexToRemove = testPeople.get(i) - i;
-          seatedPeople.remove(indexToRemove);
-          totalDistance += seatedExpansion.get(indexToRemove);
-          seatedExpansion.remove(indexToRemove);
-        }
+        // for (int i = 0; i < testPeople.size(); i++) {
+        // int indexToRemove = testPeople.get(i) - i;
+        // seatedPeople.remove(indexToRemove);
+        // totalDistance += seatedExpansion.get(indexToRemove);
+        // seatedExpansion.remove(indexToRemove);
+        // }
+        int indexToRemove = testPeople.get(0);
+        seatedPeople.remove(indexToRemove);
+        totalDistance += seatedExpansion.get(indexToRemove);
+        seatedExpansion.remove(indexToRemove);
         foundBlocker = true;
       }
       return;
@@ -146,8 +141,9 @@ public class Distance {
   }
 
   /**
+   * Expands all available nodes by expanAmount.
    * 
-   * @param expanAmount
+   * @param expanAmount Amount to expand all available nodes by.
    */
   private void expandAllBy(int expanAmount) {
     if (expanAmount != 0) {
@@ -163,7 +159,8 @@ public class Distance {
   }
 
   /**
-   * calculates and returns the minimum seated distance.
+   * Calculates how much to expand available nodes by before a path could no
+   * longer be found.
    * 
    * @return min distance
    */
@@ -180,7 +177,7 @@ public class Distance {
         int y = seatedPeople.get(i)[1];
         int distance = seatedExpansion.get(i);
         removeNodes(x, y, distance + count + 1, gridCopy);
-        //printGrid(gridCopy);
+        // printGrid(gridCopy);
       }
       if (checkGrid(gridCopy)) {
         count++;
@@ -195,15 +192,13 @@ public class Distance {
    * Prints the Grid for debugging.
    */
   public void printGrid(boolean[][] gridToPrint) {
-    if (DEBUGGING) {
-      for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < cols; j++) {
-          System.out.print((gridToPrint[i][j] ? 1 : 0) + "  ");
-        }
-        System.out.println("");
+    for (int i = 0; i < rows; i++) {
+      for (int j = 0; j < cols; j++) {
+        System.out.print((gridToPrint[i][j] ? 1 : 0) + "  ");
       }
       System.out.println("");
     }
+    System.out.println("");
   }
 
   /**

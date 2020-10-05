@@ -1,8 +1,20 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Main class for taking input and running Social Distancing Application.
+ * 
+ * @author Elbert Alcantara
+ * @author Christopher Groenewegen
+ * @author John KJ Kim
+ */
 public class Social {
 
+  /**
+   * Main method.
+   * 
+   * @param args
+   */
   public static void main(String[] args) {
 
     Scanner scan = new Scanner(System.in);
@@ -27,7 +39,8 @@ public class Social {
           seatPositions[i] = Integer.parseInt(coordinates[i]);
         }
         seatedPeople.add(seatPositions);
-      } else if (currLine.equals("")) {
+      } 
+      if (currLine.equals("") || !scan.hasNextLine()) {
         Distance dist = new Distance(gridWidth, gridLength, seatedPeople);
         dist.run();
         isFirstLine = true;
