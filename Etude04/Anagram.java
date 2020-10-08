@@ -142,7 +142,7 @@ public class Anagram {
 							&& testCurrentAnagram.size() != currentAnagram.size() - 1)) {
 				return;
 			} else {
-				
+
 				int w = 0;
 				int z = 0;
 				int i = 0;

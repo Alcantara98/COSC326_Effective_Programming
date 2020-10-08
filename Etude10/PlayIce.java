@@ -66,7 +66,7 @@ public class PlayIce {
         for (String word : words) {
             if (word.matches("\\d+")) {
                 // find out if word is a positive integer
-                int num = Integer.parseInt(word);
+                long num = Long.parseLong(word);
                 if (num > 0) {
                     icegame.game(num);
                 }

@@ -1,6 +1,6 @@
 /**
  * IceGame.java
- * Chris G, 4 October 2020
+ * Chris G, 5 October 2020
  * COSC326, etude 10
  *
  * The Ice Game, based of the 'i' before 'e' except after 'c'  rule in English.
@@ -53,12 +53,12 @@ public class IceGame {
     }
 
     /**
-     * Given a positive integer prints out the number of valid strings there are
-     * of that length adhering to our alphabet and rules.
+     * Given a positive integer, prints out the number of valid strings there
+     * are of that length adhering to our alphabet and rules.
      * @param num A positive integer which corresponds to the length strings we
      * are looking to.
      */
-    public void game(int num) {
+    public void game(long num) {
         long total = numberOfValid(num);
         System.out.println(total);
     }
@@ -138,23 +138,26 @@ public class IceGame {
     }
 
     /**
-     * Given a positive integer calculates the number of valid strings there are
-     * of that length adhering to our alphabet and rules.
+     * Given a positive integer, calculates the number of valid strings there
+     * are of that length adhering to our alphabet and rules.
      * @param num A positive integer which corresponds to the length strings we
      * are looking to.
      * @return A long which represents the number of valid strings there are of
      * a given length.
      */
-    private long numberOfValid(int num) {
+    private long numberOfValid(long num) {
         long total = 0;
 
         if (num <= 5) {
-            /* Brute force count. */
+            // int[] indices = new int[num];
+            // for (int i = 0; i < indices.length; i++) {
+            //     indices[i] = 0;
+            // }
 
+            // while (
+            
+            /* Brute force count. */
             /* num is guarenteed to be at least 1 and no greater than 5. */
-            /* Below isn't the best written code as there is a lot of code
-               duplication, however this was written for the sake of getting
-               working code down. */
             for (int i1 = 0; i1 < alphabet.length(); i1++) {
                 if (num >= 2) {
                     for (int i2 = 0; i2 < alphabet.length(); i2++) {
@@ -217,12 +220,16 @@ public class IceGame {
                exceptions. All smaller cases will be lumped in together. */
 
             /* Beginning with a brute force count of length 5 permutations. */
+
+            /* Number of possible length 5 permutations made out of alphabet's
+               characters without the rules being applied.. */
+            int numCombinations = (int)Math.pow(alphabet.length(), 5);
+
+            /* An array that will contain 5 letter permutations. */
+            String[] possibleCombinations = new String[numCombinations];
             
-            int numCombintations = (int)Math.pow(alphabet.length(), 5);
-            String[] possibleCombinations = new String[numCombintations];
-            /* Five letter permutations stored with an integer corrisponding
-               to where the corrisponding permutations are stored in other
-               arrays. */
+            /* A hashtable storing 5 letter combinations and their index in the
+               possibleCombinations array. */
             HashMap<String, Integer> permutations = new HashMap<>();
             int count = 0;
             for (int i1 = 0; i1 < alphabet.length(); i1++) {
@@ -245,67 +252,89 @@ public class IceGame {
                 }
             }
 
-            /* num is guarenteed to be 6 or greater. */
-            int tableRows = num - 5;
-
             /* Represents how many strings ending in 5 letter long combinations
                there are for each additional letter appended. */
-            long[][] frequencyTable = new long[numCombintations][tableRows];
+            //long[][] frequencyTable = new long[numCombintations][tableRows];
+            long[] currentFrequency = new long[numCombinations];
 
+            long[] previousFrequency = new long[numCombinations];
+            
             /* Represents whether appending a letter (for each letter of the
                alphabet) to the end of any 5 letter combination results in a
                valid string under our language. */
             boolean[][] letterAdditions
-                = new boolean[numCombintations][alphabet.length()];
-
-            /* Creating the initial fequency for the 1st generation of string
+                = new boolean[numCombinations][alphabet.length()];
+            
+            /* Creating the initial fequency for the 1st generation of strings
                (this is counting the number of valid 6 letter strings (which
                should be either a 1 or a 0). */
-            for (int i = 0; i < numCombintations; i++) {
-                for (int j = 0; j < tableRows; j++) {
-                    frequencyTable[i][j] = 0;
+            for (int i = 0; i < numCombinations; i++) {
+                if (validWord(possibleCombinations[i])) {
+                    currentFrequency[i] = 1;
+                } else {
+                    currentFrequency[i] = 0;
                 }
-                long frequency = 0;
+                
                 for (int j = 0; j < alphabet.length(); j++) {
                     StringBuilder sb
                         = new StringBuilder(possibleCombinations[i]);
                     sb.append(alphabet.charAt(j));
-                    letterAdditions[i][j] = validWord(sb.toString());
-                    if (letterAdditions[i][j]) {
-                        frequency++;
-                    }
+                    letterAdditions[i][j] = validCheckEnd(sb.toString());
                 }
-                frequencyTable[i][0] = frequency;
             }
-
-            /* For each table row calculate the subtotal of possible strings
-               ending in our 5 letter permutations. */
-            for (int j = 1; j < tableRows; j++) {
-                for (int i = 0; i < numCombintations; i++) {
-                    long frequency = 0;
+            
+            for (long k = 0; k < num - 5; k++) {
+                for (int i = 0; i < numCombinations; i++) {
+                    previousFrequency[i] = currentFrequency[i];
+                    currentFrequency[i] = 0;
+                }
+                for (int i = 0; i < numCombinations; i++) {
                     String current = possibleCombinations[i];
-                    for (int k = 0; k < alphabet.length(); k++) {
-                        if (letterAdditions[i][k]) {
-                            StringBuilder sb = new StringBuilder(current);
-                            sb.deleteCharAt(0);
-                            sb.append(alphabet.charAt(k));
-                            int index = permutations.get(sb.toString());
-                            frequency += frequencyTable[index][j - 1];
+                    for (int j = 0; j < alphabet.length(); j++) {
+                        StringBuilder sb = new StringBuilder(current);
+                        sb.append(alphabet.charAt(j));
+                        sb.deleteCharAt(0);
+                        int index = permutations.get(sb.toString());
+                        if (letterAdditions[i][j]) {
+                            currentFrequency[index] += previousFrequency[i];
                         }
                     }
-                    frequencyTable[i][j] = frequency;
                 }
             }
 
-            /* Summing up the final row in our frequency table which should
-               yield the total possible string combinations of length num for
-               num greater than 5. */
-            for (int i = 0; i < numCombintations; i++) {
-                total += frequencyTable[i][tableRows - 1];
+            for (int i = 0; i < numCombinations; i++) {
+                total += currentFrequency[i];
             }
             
         }
         
         return total;
     }
+
+    /**
+     * Computes whether a six letter word checks whether the last letter creates
+     * any new rules violations.
+     * @param word A six letter word.
+     * @return Returns false if word if there are any new violations, otherwise
+     * returns true.
+     */
+    private boolean validCheckEnd(String word) {
+        for (String rule : rules) {
+            String[] ruleSplit = rule.split(" ");
+            if (word.endsWith(ruleSplit[0])) {
+                StringBuilder sb = new StringBuilder(word);
+                sb.delete(sb.length() - ruleSplit[0].length(), sb.length());
+                boolean containsException = false;
+                for (int i = 1; i < ruleSplit.length; i++) {
+                    if (sb.toString().endsWith(ruleSplit[i])) {
+                        containsException = true;
+                    }
+                }
+                if (!containsException) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }           
 }

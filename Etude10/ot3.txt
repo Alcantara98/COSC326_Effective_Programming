@@ -1,0 +1,9 @@
+Invalid
+Valid
+Valid
+Invalid
+Invalid
+3
+8
+22
+730128997

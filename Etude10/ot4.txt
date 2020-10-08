@@ -1,0 +1,9 @@
+Invalid
+Invalid
+Invalid
+Valid
+3
+6
+12
+1536
+1572864
