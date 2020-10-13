@@ -13,6 +13,8 @@ import java.util.*;
 /**
  * Given valid input plays the Ice Game.
  * @author Christopher Groenewegen
+ * @author Elbert Alcantara
+ * @author John Kim
  */
 public class PlayIce {
     private static final boolean VERBOSE = false;
