@@ -5,7 +5,10 @@ import java.util.Random;
 /**
  * A main method used for testing code for the Rollin' etude.
  *
- * @author Christopher Groenewegen, Max Collier, John Kim
+ * @author Christopher Groenewegen
+ * @author Max Collier
+ * @author John Kim
+ * @author Elbert Alcantara
  */
 public class Main {
 	
