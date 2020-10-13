@@ -10,7 +10,10 @@ import java.util.Collections;
  * combined sets
  * 
  *
- * @author Christopher Groenewegen, Max Collier, John Kim
+ * @author Christopher Groenewegen
+ * @author Max Collier
+ * @author John Kim
+ * @author Elbet Alcantara
  */
 public class Game extends Rollin {
 
