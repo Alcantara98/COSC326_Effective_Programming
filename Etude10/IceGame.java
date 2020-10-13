@@ -20,6 +20,8 @@ import java.lang.Math;
  * words which contain forbidden strings are not allowed with in the language
  * unless the are immediatedly preceeded by an exception.
  * @author Christopher Groenewegen
+ * @author Elbert Alcantara
+ * @author John Kim
  */
 public class IceGame {
     private String alphabet;
