@@ -1,0 +1,102 @@
+<!-- 
+    Etude11 326
+    @author Elbert Alcantara
+
+    A. Given a base b and an integer n finds the longest block of integers all having
+    repeated digits in base b that are less than n. The output should be the first
+    integer of the block (in normal decimal representation) and the length of the
+    block (if there is more than one block of the same length, the first one should
+    be given.)
+    
+    B. Given two bases, b and c, finds the smallest integer n which has repeated
+    digits in both bases.
+ -->
+<html lang="en">
+
+<head>
+    <title>Etude11</title>
+    <style>
+        html {
+            background-color: rgb(167, 255, 248);
+        }
+        
+        input {
+            padding: 2px;
+            margin: 5px 0px 5px 0px;
+        }
+        
+        #partA {
+            background-color: rgba(255, 147, 153, 0.808);
+            padding: 20px 30px 20px 40px;
+            width: 200px;
+            margin: auto;
+        }
+        
+        #partB {
+            background-color: rgba(129, 230, 255, 0.795);
+            padding: 20px 30px 20px 40px;
+            width: 200px;
+            margin: auto;
+        }
+        
+        h1 {
+            padding: 20px 30px 20px 70px;
+            width: 200px;
+            margin: auto;
+        }
+        
+        #partOne {
+            padding: 0px 250px 20px 250px;
+        }
+        
+        #h2_PartOne {
+            padding: 0px 30px 20px 30px;
+            width: 100px;
+            margin: auto;
+        }
+    </style>
+
+    <script type="text/javascript" src="Etude13App.js">
+    </script>
+</head>
+
+<body>
+    <h1>ETUDE_11</h1>
+    <h2 id="h2_PartOne">Part One</h2>
+    <center>
+    <p id="partOne">
+        Yes there is always a distinct largest number for each base that has no repeated digits. <br> The largest possible digit in a given base of 'b' is b - 1. The further left a digit is, the higher its value, <br> hence given all possible digits in the
+        given base which are between (inclusive) 0 and b-1, <br> we place the largest digit to the left, then consecutively place the next largest digit after, <br> to its right until all possible digits have been used. So Given base 7, <br> the largest would be
+        654321, or 6543210 if we consider 0 as a digit.
+    </p>
+    </center>
+    <div id="partA">
+        <h2>Part A</h2>
+        <label>Base</label>
+        <br>
+        <input type="text" id="ab">
+        <br>
+        <label>Max Allowed Int</label>
+        <br>
+        <input type="text" id="an">
+        <br>
+        <button onclick="partA()" type="submit">Enter</button>
+        <p id="resultA">result:</p>
+    </div>
+
+    <div id="partB">
+        <h2>Part B</h2>
+        <label>Base B</label>
+        <br>
+        <input type="text" id="bb">
+        <br>
+        <label>Base C</label>
+        <br>
+        <input type="text" id="bc">
+        <br>
+        <button onclick="partB()" type="submit">Enter</button>
+        <p id="resultB">result:</p>
+    </div>
+</body>
+
+</html>
