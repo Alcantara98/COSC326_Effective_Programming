@@ -358,8 +358,7 @@ public class Anagram {
 	 * with the corresponding sorted word (sorted in characters).
 	 * 
 	 * This could be done initially with the rawDictionary, but I'm currently using
-	 * bubble sort which works well with smaller sizes, and I'm not in the mood to
-	 * implement Merge Sort atm.
+	 * bubble sort which works well with smaller sizes.
 	 * 
 	 * @param dictionary word pool to be sorted and added to hashTable.
 	 * @return sorted word pool.
