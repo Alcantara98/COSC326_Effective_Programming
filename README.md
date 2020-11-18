@@ -3,7 +3,7 @@
 ### About
 COSC326 is an undergrad Paper at the University of Otago, and is focused upon improving Problem Solving 
 and Programming Logic skills. There are 13 Etudes/Tasks to complete of varying difficulties, most which 
-have to be completed in pairs or groups.
+have to be completed in pairs or groups.  
 Click [here](https://www.otago.ac.nz/courses/papers/index.html?papercode=COSC326#2020) to find out more.
 ### Personal Thoughts
 I thouroughly enjoyed this paper and it most definitely improved my Problem Solving abilities.
@@ -19,7 +19,7 @@ in the future.
 * Etude03 was also difficult. The use of regex may have made my life easier, but I decided not to.
 * Etude06 was pretty cool. I had to use Java's Graphics Interface which I hadn't touched in a long time.
 ### Technologies
-I mainly used Java in this paper since its the language most of the other students are most familiar with.
+I mainly used Java in this paper since its the language most of the other students are most familiar with.  
 I also explored JS and Node a little in Etude13.
 ### Status
 I passed the paper and have working solutions for each problem. Any feedback on efficiency is welcome.
