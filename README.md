@@ -4,6 +4,7 @@
 COSC326 is an undergrad Paper at the University of Otago, and is focused upon improving Problem Solving 
 and Programming Logic skills. There are 13 Etudes/Tasks to complete of varying difficulties, most which 
 have to be completed in pairs or groups.
+Click [here](https://www.otago.ac.nz/courses/papers/index.html?papercode=COSC326#2020) to find out more.
 ### Personal Thoughts
 I thouroughly enjoyed this paper and I most definitely improved my Problem Solving abilities.
 Although feed back was provided for our code, I was a disappointed that they did not show us the optimal 
