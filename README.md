@@ -20,6 +20,6 @@ in the future.
 * Etude06 was pretty cool. I had to use Java's Graphics Interface which I hadn't touched in a long time.
 ### Technologies
 I mainly used Java in this paper since its the language most of the other students are most familiar with.
-I explored JS and Node a little in Etude13.
+I also explored JS and Node a little in Etude13.
 ### Status
 I passed the paper and have working solutions for each problem. Any feedback on efficiency is welcome.
