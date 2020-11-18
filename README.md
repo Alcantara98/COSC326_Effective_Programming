@@ -19,7 +19,7 @@ in the future.
 * Etude03 was also difficult. The use of regex may have made my life easier, but I decided not to.
 * Etude06 was pretty cool. I had to use Java's Graphics Interface which I hadn't touched in a long time.
 ### Technologies
-I mainly used Java in this paper since its the language most of the other students are most familiar with.  
+I mainly used Java in this paper since it's the language most of the other students are most familiar with.  
 I also explored JS and Node a little in Etude13.
 ### Status
 I passed the paper and have working solutions for each problem. Any feedback on efficiency is welcome.
