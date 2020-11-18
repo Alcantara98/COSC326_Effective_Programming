@@ -1,5 +1,5 @@
-# Effective Programming COSC326
-####Solutions for all 13 Etudes of COSC326 paper 2020.
+# <span style="color:blue">Effective Programming COSC326</span>
+#### Solutions for all 13 Etudes of COSC326 paper 2020.
 ### About
 COSC326 is an undergrad Paper at the University of Otago, and is focused upon improving Problem Solving 
 and Programming Logic skills. There are 13 Etudes/Tasks to complete of varying difficulties, most which 
