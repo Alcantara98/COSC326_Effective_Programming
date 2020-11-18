@@ -354,11 +354,12 @@ public class Anagram {
 	 * characters, it picks the best one (best being alphabetically higher, where (a
 	 * > z). Then we re-sort the character-sorted words alphabetically based on the
 	 * unsorted word that is still in inputDictionary, hence why we sort it
-	 * alongside smallDictionary. Then we add the unsorted words to the hashTable
-	 * with the corresponding sorted word (sorted in characters).
+	 * alongside smallDictionary (we use sortAnagram function below for this part). 
+	 * Then we add the unsorted words to the hashTable with the corresponding sorted 
+	 * word (sorted in characters).
 	 * 
 	 * This could be done initially with the rawDictionary, but I'm currently using
-	 * bubble sort which works well with smaller sizes.
+	 * insertion sort which works well with smaller sizes.
 	 * 
 	 * @param dictionary word pool to be sorted and added to hashTable.
 	 * @return sorted word pool.
@@ -465,8 +466,8 @@ public class Anagram {
 	}
 
 	/**
-	 * This function takes an ArrayList<String> that will be sorted by comparing
-	 * alphabetical order of each char (a first before b).
+	 * This function takes an ArrayList<char[]> where the word is sorted alphabetically and
+	 * sort it based on the corresponding unsorted original word.
 	 * 
 	 * @param anagram
 	 * @return sorted anagram
