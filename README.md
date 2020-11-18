@@ -6,7 +6,7 @@ and Programming Logic skills. There are 13 Etudes/Tasks to complete of varying d
 have to be completed in pairs or groups.  
 Click [here](https://www.otago.ac.nz/courses/papers/index.html?papercode=COSC326#2020) to find out more.
 ### Personal Thoughts
-I thouroughly enjoyed this paper and it most definitely improved my Problem Solving abilities.
+I thoroughly enjoyed this paper and it most definitely improved my Problem Solving abilities.
 Although feedback was provided for our code, I was a disappointed that they did not show us the optimal 
 solutions for the problems. We improved our code until it was efficient enough, but they didn't mention if
 we reached the optimal solution or not. I'm guessing it is due to the reusability of the problems for
