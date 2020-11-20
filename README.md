@@ -9,17 +9,17 @@ Click [here](https://www.otago.ac.nz/courses/papers/index.html?papercode=COSC326
 I thoroughly enjoyed this paper and it most definitely improved my Problem Solving abilities.
 Although feedback was provided for our code, I was a disappointed that they did not show us the optimal 
 solutions for the problems. We improved our code until it was efficient enough, but they didn't mention if
-we reached the optimal solution or not. I'm guessing it is due to the reusability of the problems for
+we reached the optimal solution. I'm guessing it is due to the reusability of the problems for
 future semesters. But it does provide an incentive to come back and explore the problems again.
 ### Notable Etudes
 * Etude04 was considered by many, including myself, to be the most difficult. 
 Given a word and a dictionary containing potentially thousands of words, we had to find the best anagram.
 The problem involved a lot sorting, the use of hashtables, and DFS. I have plans to re-write this in cpp
 in the future.
-* Etude03 was also difficult. The use of regex may have made my life easier, but I decided not to.
+* Etude03 was also difficult. The use of regex may have made it easier.
 * Etude06 was pretty cool. I had to use Java's Graphics Interface which I hadn't touched in a long time.
 ### Technologies
-I mainly used Java in this paper since it's the language most of the other students are most familiar with.  
+I mainly used Java in this paper since it's the language most of the other students were most familiar with.  
 I also explored JS and Node a little in Etude13.
 ### Status
-I passed the paper and have working solutions for each problem. Any feedback on efficiency is welcome.
+I passed the paper and have working solutions for each problem. Etude02 could be more efficient, and Etude03 could work on modularity.
