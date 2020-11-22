@@ -7,17 +7,15 @@ have to be completed in pairs or groups.
 Click [here](https://www.otago.ac.nz/courses/papers/index.html?papercode=COSC326#2020) to find out more.
 ### Personal Thoughts
 I thoroughly enjoyed this paper and it most definitely improved my Problem Solving abilities.
-Although feedback was provided for our code, I was a disappointed that they did not show us the optimal 
+Although feedback was provided for our code, they did not show us the optimal 
 solutions for the problems. We improved our code until it was efficient enough, but they didn't mention if
-we reached the optimal solution. I'm guessing it is due to the reusability of the problems for
-future semesters. But it does provide an incentive to come back and explore the problems again.
+we reached the optimal solution. It does, however, provide an incentive to come back and explore the problems again.
 ### Notable Etudes
 * Etude04 was considered by many, including myself, to be the most difficult. 
 Given a word and a dictionary containing potentially thousands of words, we had to find the best anagram.
-The problem involved a lot sorting, the use of hashtables, and DFS. I have plans to re-write this in cpp
-in the future.
+The problem involved a lot sorting, the use of hashtables, and DFS.
 * Etude03 was also difficult. The use of regex may have made it easier.
-* Etude06 was pretty cool. I had to use Java's Graphics Interface which I hadn't touched in a long time.
+* Etude06 was nice. I had to use Java's Graphics Interface which I hadn't touched in a long time.
 ### Technologies
 I mainly used Java in this paper since it's the language most of the other students were most familiar with.  
 I also explored JS and Node a little in Etude13.
